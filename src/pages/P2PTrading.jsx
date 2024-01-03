@@ -4,9 +4,9 @@ import { Container, Grid, Paper, Stack, Button, ButtonGroup } from '@mui/materia
 import { Avatar, Chip, Typography } from '@mui/material';
 import { ArrowDropDown } from '@mui/icons-material';
 import { CandlestickChart, TrendingUp, Camera, Settings } from '@mui/icons-material';
-import { makeStyles } from '@mui/styles';
+import { styled } from "@mui/system";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = styled((theme) => ({
   btn: {
     width: "40px",
     height: "40px",

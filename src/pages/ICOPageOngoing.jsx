@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@mui/styles';
+import { styled } from "@mui/system";
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -15,7 +15,7 @@ import Slider from '@mui/material/Slider';
 import NavigationBar from "../components/NavigationBar"
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = styled((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: '#F9FAFB', // Set the text color
