@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
-import Paper from '@material-ui/core/Paper';
-import Chip from '@material-ui/core/Chip';
-import Avatar from '@material-ui/core/Avatar';
+import { makeStyles } from '@mui/styles';
+import AppBar from '@mui/material/AppBar';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import InputBase from '@mui/material/InputBase';
+import SearchIcon from '@mui/icons-material/Search';
+import Paper from '@mui/material/Paper';
+import Chip from '@mui/material/Chip';
+import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/core/Slider';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Slider from '@mui/material/Slider';
 import NavigationBar from "../components/NavigationBar"
-import GitHubIcon from '@material-ui/icons/GitHub';
-import PublicIcon from '@material-ui/icons/Public';
-import TelegramIcon from '@material-ui/icons/Telegram';
-import CloseIcon from '@material-ui/icons/Close';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import PublicIcon from '@mui/icons-material/Public';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 const useStyles = makeStyles((theme) => ({
