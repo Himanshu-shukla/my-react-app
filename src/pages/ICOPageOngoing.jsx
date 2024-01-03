@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { styled } from "@mui/system";
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -13,9 +12,11 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
 import NavigationBar from "../components/NavigationBar"
+import useCustomStyles from '../useCustomStyles';
+import { useTheme } from '@mui/material/styles';
 
 
-const useStyles = styled((theme) => ({
+const styles = (theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: '#F9FAFB', // Set the text color
@@ -140,10 +141,12 @@ const useStyles = styled((theme) => ({
   slider: {
     marginTop: theme.spacing(2),
   },
-}));
+});
 
 const ICOPageOngoing = ({ initialStep = 0 }) => {
-  const classes = useStyles();
+  const theme = useTheme();
+  const classes = useCustomStyles(styles, theme);
+
   const [value, setValue] = useState(initialStep);
 
   const handleChange = (event, newValue) => {
@@ -153,35 +156,111 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
   return (
     <>
       <NavigationBar />
-      <div className={classes.root}>
-        <AppBar position="static" className={classes.appBar}>
+      <div style={{
+        flexGrow: 1,
+        backgroundColor: '#F9FAFB'
+      }}>
+        <AppBar position="static" style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          color: '#2E3A5C', // Set the background color
+          backgroundColor: '#F9FAFB', // Set the text color
+        }}>
           <Tabs value={value} onChange={handleChange}>
             <Tab label="On going" />
             <Tab label="Upcoming" />
             <Tab label="Completed" />
           </Tabs>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
+          <div style={{
+            position: 'relative',
+            borderRadius: "5px",
+            backgroundColor: "#fff",
+            marginLeft: 20,
+            marginRight: 20,
+            width: '20%',
+          }}>
+            <div style={{
+              width: "30px",
+              height: '100%',
+              position: 'absolute',
+              pointerEvents: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: "gray",
+            }}>
               <SearchIcon />
             </div>
             <InputBase
               placeholder="Search..."
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
+              style={{
+                color: 'inherit',
+                paddingTop: 1,
+                paddingRight: 1,
+                paddingBottom: 1,
+                paddingLeft: 10,
+                width: '100%',
+                position: 'relative',
+                left: "30px"
               }}
             />
           </div>
         </AppBar>
         {value === 0 && (
-          <Paper className={classes.widePaper}>
+          <Paper style={{
+            margin: 2,
+            padding: 3,
+            display: 'flex',
+            justifyContent: 'space-between',
+            height: "fit-content"
+          }}>
             {/* Left Container */}
-            <div className={classes.leftContainer}>
-              <div className={classes.badgesRow}>
-                <Chip label="RWA" className={classes.tag} color="primary" />
-                <Chip label="KYC Verified" className={classes.tag} color="secondary" />
-                <Chip label="Audited" className={classes.tag} color="error" />
-                <Chip label="Public" className={classes.tag} color="success" />
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              width: "50%"
+            }}>
+              <div style={{
+                display: 'flex',
+                flexDirection: 'row',
+                marginTop: 10,
+                marginBottom: 10
+              }}>
+                <Chip label="RWA" style={{
+                  marginRight: 10,
+                  height: '20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  paddingLeft: 10,
+                  paddingRight: 10
+                }} color="primary" />
+                <Chip label="KYC Verified" style={{
+                  marginRight: 10,
+                  height: '20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  paddingLeft: 10,
+                  paddingRight: 10
+                }} color="secondary" />
+                <Chip label="Audited" style={{
+                  marginRight: 10,
+                  height: '20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  paddingLeft: 10,
+                  paddingRight: 10
+                }} color="error" />
+                <Chip label="Public" style={{
+                  marginRight: 10,
+                  height: '20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  paddingLeft: 10,
+                  paddingRight: 10
+                }} color="success" />
               </div>
               <Stack direction="row" spacing={2} alignItems="center" justifyContent="left">
 
@@ -216,15 +295,33 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
                 </Stack>
                 {/* Add three more rows like the above */}
               </div>
-              <Button variant="contained" color="primary" className={classes.button}>
+              <Button variant="contained" color="primary" style={{
+                width: '90%',
+                marginTop: 12,
+                background: "#fff",
+                border: "1.5px solid #2E3A5C",
+                borderRadius: "6px",
+                color: "#2E3A5C",
+                textTransform: "none"
+              }}>
                 See Details
               </Button>
             </div>
 
             {/* Right Container */}
-            <div className={classes.rightContainer}>
-              <Typography variant="body1" className={classes.headingToken}>Token Sale ENDS in</Typography>
-              <Typography className={classes.counterText}>20 :: 10 :: 34 :: 07</Typography>
+            <div style={{
+              border: '1px solid #2E3A5C', // Border color
+              paddingLeft: theme.spacing(3),
+              borderRadius: "10px",
+              width: "50%"
+            }}>
+              <Typography variant="body1" style={{ marginTop: 20 }}>Token Sale ENDS in</Typography>
+              <Typography style={{
+                fontSize: "50px",
+                fontWeight: 'bold',
+                marginBottom: 10,
+                marginTop: 20
+              }}>20 :: 10 :: 34 :: 07</Typography>
               <Stack direction="row" spacing={9}>
 
                 <Typography className={classes.smallText}>Days   </Typography>
@@ -232,12 +329,26 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
                 <Typography className={classes.smallText}>Minutes</Typography>
                 <Typography className={classes.smallText}>Seconds</Typography>
               </Stack>
-              <Typography className={classes.newText}>Raised 200,00 of $1,500,000</Typography>
+              <Typography style={{
+                color: "#000",
+                fontFamily: "Inter",
+                fontSize: "16px",
+                fontStyle: "normal",
+                fontWeight: "500",
+                lineHeight: "normal",
+                letterSpacing: "-0.32px",
+                marginTop: 40
+              }}>Raised 200,00 of $1,500,000</Typography>
 
-              <div className={classes.slider}>
+              <div style={{ marginTop: 20 }}>
                 <Slider value={50} />
               </div>
-              <Button variant="contained" className={classes.buybtn}>
+              <Button variant="contained" style={{
+                borderRadius: "6px",
+                background: " #2E3A5C",
+                color: "#fff",
+                width: "90%"
+              }}>
                 Buy Token Now
               </Button>
             </div>
@@ -246,14 +357,58 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
         {value === 1 && (
           <>
 
-            <Paper className={classes.widePaper}>
+            <Paper style={{
+              margin: 2,
+              padding: 3,
+              display: 'flex',
+              justifyContent: 'space-between',
+              height: "fit-content"
+            }}>
               {/* Left Container */}
-              <div className={classes.leftContainer}>
-                <div className={classes.badgesRow}>
-                  <Chip label="RWA" className={classes.tag} color="primary" />
-                  <Chip label="KYC Verified" className={classes.tag} color="secondary" />
-                  <Chip label="Audited" className={classes.tag} color="error" />
-                  <Chip label="Public" className={classes.tag} color="success" />
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                width: "50%"
+              }}>
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  marginTop: 10,
+                  marginBottom: 10
+                }}>
+                  <Chip label="RWA" style={{
+                    marginRight: 10,
+                    height: '20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    paddingLeft: 10,
+                    paddingRight: 10
+                  }} color="primary" />
+                  <Chip label="KYC Verified" style={{
+                    marginRight: 10,
+                    height: '20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    paddingLeft: 10,
+                    paddingRight: 10
+                  }} color="secondary" />
+                  <Chip label="Audited" style={{
+                    marginRight: 10,
+                    height: '20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    paddingLeft: 10,
+                    paddingRight: 10
+                  }} color="error" />
+                  <Chip label="Public" style={{
+                    marginRight: 10,
+                    height: '20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    paddingLeft: 10,
+                    paddingRight: 10
+                  }} color="success" />
                 </div>
                 <Stack direction="row" spacing={2} alignItems="center" justifyContent="left">
 
@@ -288,15 +443,33 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
                   </Stack>
                   {/* Add three more rows like the above */}
                 </div>
-                <Button variant="contained" color="primary" className={classes.button}>
+                <Button variant="contained" color="primary" style={{
+                  width: '90%',
+                  marginTop: 20,
+                  background: "#fff",
+                  border: "1.5px solid #2E3A5C",
+                  borderRadius: "6px",
+                  color: "#2E3A5C",
+                  textTransform: "none"
+                }}>
                   See Details
                 </Button>
               </div>
 
               {/* Right Container */}
-              <div className={classes.rightContainer}>
-                <Typography variant="body1" className={classes.headingToken}>Token Sale ENDS in</Typography>
-                <Typography className={classes.counterText}>20 :: 10 :: 34 :: 07</Typography>
+              <div style={{
+                border: '1px solid #2E3A5C', // Border color
+                paddingLeft: theme.spacing(3),
+                borderRadius: "10px",
+                width: "50%"
+              }}>
+                <Typography variant="body1" style={{ marginTop: 20 }}>Token Sale ENDS in</Typography>
+                <Typography style={{
+                  fontSize: "50px",
+                  fontWeight: 'bold',
+                  marginBottom: 10,
+                  marginTop: 20
+                }}>20 :: 10 :: 34 :: 07</Typography>
                 <Stack direction="row" spacing={9}>
 
                   <Typography className={classes.smallText}>Days   </Typography>
@@ -304,24 +477,82 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
                   <Typography className={classes.smallText}>Minutes</Typography>
                   <Typography className={classes.smallText}>Seconds</Typography>
                 </Stack>
-                <Typography className={classes.newText}>Raised 200,00 of $1,500,000</Typography>
+                <Typography style={{
+                  color: "#000",
+                  fontFamily: "Inter",
+                  fontSize: "16px",
+                  fontStyle: "normal",
+                  fontWeight: "500",
+                  lineHeight: "normal",
+                  letterSpacing: "-0.32px",
+                  marginTop: 40
+                }}>Raised 200,00 of $1,500,000</Typography>
 
-                <div className={classes.slider}>
+                <div style={{ marginTop: 20 }}>
                   <Slider value={50} />
                 </div>
-                <Button variant="contained" className={classes.buybtn}>
+                <Button variant="contained" style={{
+                  borderRadius: "6px",
+                  background: " #2E3A5C",
+                  color: "#fff",
+                  width: "90%"
+                }}>
                   Buy Token Now
                 </Button>
               </div>
             </Paper>
-            <Paper className={classes.widePaper}>
+            <Paper style={{
+              margin: 2,
+              padding: 3,
+              display: 'flex',
+              justifyContent: 'space-between',
+              height: "fit-content"
+            }}>
               {/* Left Container */}
-              <div className={classes.leftContainer}>
-                <div className={classes.badgesRow}>
-                  <Chip label="RWA" className={classes.tag} color="primary" />
-                  <Chip label="KYC Verified" className={classes.tag} color="secondary" />
-                  <Chip label="Audited" className={classes.tag} color="error" />
-                  <Chip label="Public" className={classes.tag} color="success" />
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                width: "50%"
+              }}>
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  marginTop: 10,
+                  marginBottom: 10
+                }}>
+                  <Chip label="RWA" style={{
+                    marginRight: 10,
+                    height: '20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    paddingLeft: 10,
+                    paddingRight: 10
+                  }} color="primary" />
+                  <Chip label="KYC Verified" style={{
+                    marginRight: 10,
+                    height: '20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    paddingLeft: 10,
+                    paddingRight: 10
+                  }} color="secondary" />
+                  <Chip label="Audited" style={{
+                    marginRight: 10,
+                    height: '20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    paddingLeft: 10,
+                    paddingRight: 10
+                  }} color="error" />
+                  <Chip label="Public" style={{
+                    marginRight: 10,
+                    height: '20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    paddingLeft: 10,
+                    paddingRight: 10
+                  }} color="success" />
                 </div>
                 <Stack direction="row" spacing={2} alignItems="center" justifyContent="left">
 
@@ -356,15 +587,33 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
                   </Stack>
                   {/* Add three more rows like the above */}
                 </div>
-                <Button variant="contained" color="primary" className={classes.button}>
+                <Button variant="contained" color="primary" style={{
+                  width: '90%',
+                  marginTop: 20,
+                  background: "#fff",
+                  border: "1.5px solid #2E3A5C",
+                  borderRadius: "6px",
+                  color: "#2E3A5C",
+                  textTransform: "none"
+                }}>
                   See Details
                 </Button>
               </div>
 
               {/* Right Container */}
-              <div className={classes.rightContainer}>
-                <Typography variant="body1" className={classes.headingToken}>Token Sale ENDS in</Typography>
-                <Typography className={classes.counterText}>TBA</Typography>
+              <div style={{
+                border: '1px solid #2E3A5C', // Border color
+                paddingLeft: theme.spacing(3),
+                borderRadius: "10px",
+                width: "50%"
+              }}>
+                <Typography variant="body1" style={{ marginTop: 20 }}>Token Sale ENDS in</Typography>
+                <Typography style={{
+                  fontSize: "50px",
+                  fontWeight: 'bold',
+                  marginBottom: 10,
+                  marginTop: 20
+                }}>TBA</Typography>
                 <Stack direction="row" spacing={9}>
 
                   {/* <Typography className={classes.smallText}>Days   </Typography>
@@ -372,12 +621,26 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
                   <Typography className={classes.smallText}>Minutes</Typography>
                   <Typography className={classes.smallText}>Seconds</Typography> */}
                 </Stack>
-                <Typography className={classes.newText}>Raised 200,00 of $1,500,000</Typography>
+                <Typography style={{
+                  color: "#000",
+                  fontFamily: "Inter",
+                  fontSize: "16px",
+                  fontStyle: "normal",
+                  fontWeight: "500",
+                  lineHeight: "normal",
+                  letterSpacing: "-0.32px",
+                  marginTop: 40
+                }}>Raised 200,00 of $1,500,000</Typography>
 
-                <div className={classes.slider}>
+                <div style={{ marginTop: 20 }}>
                   <Slider value={50} />
                 </div>
-                <Button variant="contained" className={classes.buybtn}>
+                <Button variant="contained" style={{
+                  borderRadius: "6px",
+                  background: " #2E3A5C",
+                  color: "#fff",
+                  width: "90%"
+                }}>
                   Buy Token Now
                 </Button>
               </div>
@@ -386,14 +649,58 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
 
         )}
         {value === 2 && (
-          <Paper className={classes.widePaper}>
+          <Paper style={{
+            margin: 2,
+            padding: 3,
+            display: 'flex',
+            justifyContent: 'space-between',
+            height: "fit-content"
+          }}>
             {/* Left Container */}
-            <div className={classes.leftContainer}>
-              <div className={classes.badgesRow}>
-                <Chip label="RWA" className={classes.tag} color="primary" />
-                <Chip label="KYC Verified" className={classes.tag} color="secondary" />
-                <Chip label="Audited" className={classes.tag} color="error" />
-                <Chip label="Public" className={classes.tag} color="success" />
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              width: "50%"
+            }}>
+              <div style={{
+                display: 'flex',
+                flexDirection: 'row',
+                marginTop: 10,
+                marginBottom: 10
+              }}>
+                <Chip label="RWA" style={{
+                  marginRight: 10,
+                  height: '20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  paddingLeft: 10,
+                  paddingRight: 10
+                }} color="primary" />
+                <Chip label="KYC Verified" style={{
+                  marginRight: 10,
+                  height: '20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  paddingLeft: 10,
+                  paddingRight: 10
+                }} color="secondary" />
+                <Chip label="Audited" style={{
+                  marginRight: 10,
+                  height: '20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  paddingLeft: 10,
+                  paddingRight: 10
+                }} color="error" />
+                <Chip label="Public" style={{
+                  marginRight: 10,
+                  height: '20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  paddingLeft: 10,
+                  paddingRight: 10
+                }} color="success" />
               </div>
               <Stack direction="row" spacing={2} alignItems="center" justifyContent="left">
 
@@ -428,15 +735,33 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
                 </Stack>
                 {/* Add three more rows like the above */}
               </div>
-              <Button variant="contained" color="primary" className={classes.button}>
+              <Button variant="contained" color="primary" style={{
+                width: '90%',
+                marginTop: 20,
+                background: "#fff",
+                border: "1.5px solid #2E3A5C",
+                borderRadius: "6px",
+                color: "#2E3A5C",
+                textTransform: "none"
+              }}>
                 See Details
               </Button>
             </div>
 
             {/* Right Container */}
-            <div className={classes.rightContainer}>
-              <Typography variant="body1" className={classes.headingToken}>Token Sale ENDS in</Typography>
-              <Typography className={classes.counterText}>00 :: 00 :: 00 :: 00</Typography>
+            <div style={{
+              border: '1px solid #2E3A5C', // Border color
+              paddingLeft: theme.spacing(3),
+              borderRadius: "10px",
+              width: "50%"
+            }}>
+              <Typography variant="body1" style={{ marginTop: 20 }}>Token Sale ENDS in</Typography>
+              <Typography style={{
+                fontSize: "50px",
+                fontWeight: 'bold',
+                marginBottom: 10,
+                marginTop: 20
+              }}>00 :: 00 :: 00 :: 00</Typography>
               <Stack direction="row" spacing={9}>
 
                 <Typography className={classes.smallText}>Days   </Typography>
@@ -444,12 +769,26 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
                 <Typography className={classes.smallText}>Minutes</Typography>
                 <Typography className={classes.smallText}>Seconds</Typography>
               </Stack>
-              <Typography className={classes.newText}>Raised 200,00 of $1,500,000</Typography>
+              <Typography style={{
+                color: "#000",
+                fontFamily: "Inter",
+                fontSize: "16px",
+                fontStyle: "normal",
+                fontWeight: "500",
+                lineHeight: "normal",
+                letterSpacing: "-0.32px",
+                marginTop: 40
+              }}>Raised 200,00 of $1,500,000</Typography>
 
-              <div className={classes.slider}>
+              <div style={{ marginTop: 20 }}>
                 <Slider value={50} />
               </div>
-              <Button variant="contained" className={classes.buybtn}>
+              <Button variant="contained" style={{
+                borderRadius: "6px",
+                background: " #2E3A5C",
+                color: "#fff",
+                width: "90%"
+              }}>
                 Buy Token Now
               </Button>
             </div>

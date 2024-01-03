@@ -38,7 +38,6 @@ function JunaBlog() {
 
     return (
       <>
-        <NavigationBar />
         <div className="font-inter inline-flex h-[1353px] w-[1440px] resize flex-row overflow-hidden tracking-[0px]" >
           <div className="flex h-full w-full items-start overflow-clip bg-gray-50 pb-20" >
             <div className="relative mr-0 flex flex-grow items-start justify-end self-stretch pl-80 pr-10 pt-28" >
