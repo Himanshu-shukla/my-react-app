@@ -11,7 +11,7 @@ const buttons = [
     { id: 9, label: '9. Home - Setting Verification', url: '/setting-verification' },
     { id: 10, label: '10. Market List', url: '/market-list' },
     { id: 11, label: '11. Market Grid', url: '/market' },
-    { id: 12, label: '12. P2P Trading', url: '/p2p-trading' },
+    { id: 12, label: '12. P2P Trading', url: '/trade' },
     { id: 13, label: '13. P2P Trading - Line Chart', url: '/p2p-trading-lc' },
     { id: 14, label: '14. P2P Trading - Line Chart-2', url: '/p2p-trading-lc2' },
     { id: 15, label: '15. P2P Trading - Line Chart-3', url: '/p2p-trading-lc3' },
