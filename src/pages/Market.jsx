@@ -1,10 +1,15 @@
 import NavigationBar from '../components/NavigationBar';
 import React, { useState } from 'react'
-import { Stack, Pagination, Button, CardMedia, TextField, InputAdornment, CardContent, Paper, Card, Tabs, Tab, Typography, Box } from '@mui/material';
+import { Table, TableBody, TableCell, Button, TableContainer, TableHead, TableRow, Paper, Chip, Avatar, Stack, Pagination, CardMedia, TextField, InputAdornment, CardContent, Card, Tabs, Tab, Typography, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import highGraph from '../assets/Container3.svg'
+import lowGraph from '../assets/Container5.svg'
+import ControlSvg from '../assets/Control.svg'
+import './Market.css'
 
-
-const cardData = [
+const gridData = [
   {
     imageUrl: 'https://s3-alpha-sig.figma.com/img/8b53/76ad/89bef5775249ca0022f76c2646629a4e?Expires=1705276800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=pTDw251SJLXEXdfbWcRD9aMmOZ7tSOLuR8aHppRjmwrtIHgcTjJlgBAbK89BrDd-H1Qx1VvciMT8Lq~dAx10idOIDf1Ej9I0My4BErsOjQ2iFWW5bPTG6tjPIlGI8PHoeux6F28kPe6FoSlSazf~4Sgug9VHpTmDZlAiajuOBNSJNKk2o5P9HUZ14xWj1m4OPb0DK8t3mlf889rS7vmdx77scdFNWmRTSkPLdPfcOZaVvspLv2RtI6j8LuygtbPr6y90sQvx4Hqt2YY09pqMbIP4uoL0xnqOazqX6g-xxKoaxX8DWWuOBjDLcyTKRmEv4kOM4qLv4Uu6ge4XWvvb3g__',
     heading: 'Detox Digital Coin',
@@ -31,10 +36,23 @@ const cardData = [
   },
 ];
 
+const listData = [
+  { name: 'PROPC', helperText: 'Propchain', price: '$2.03', change: '+45', volume: "$24.56M", marketCap: '$27.53B', imageUrl: highGraph, action: 'Trade', },
+  { name: 'PROPC', helperText: 'Propchain', price: '$2.03', change: '+45', volume: "$24.56M", marketCap: '$27.53B', imageUrl: highGraph, action: 'Trade', },
+  { name: 'PROPC', helperText: 'Propchain', price: '$2.03', change: '+45', volume: "$24.56M", marketCap: '$27.53B', imageUrl: highGraph, action: 'Trade', },
+  { name: 'PROPC', helperText: 'Propchain', price: '$2.03', change: '+45', volume: "$24.56M", marketCap: '$27.53B', imageUrl: highGraph, action: 'Trade', },
+  { name: 'PROPC', helperText: 'Propchain', price: '$2.03', change: '+45', volume: "$24.56M", marketCap: '$27.53B', imageUrl: highGraph, action: 'Trade', },
+  { name: 'PROPC', helperText: 'Propchain', price: '$2.03', change: '-45', volume: "$24.56M", marketCap: '$27.53B', imageUrl: lowGraph, action: 'Trade', },
+  { name: 'PROPC', helperText: 'Propchain', price: '$2.03', change: '-45', volume: "$24.56M", marketCap: '$27.53B', imageUrl: lowGraph, action: 'Trade', },
+  { name: 'PROPC', helperText: 'Propchain', price: '$2.03', change: '-45', volume: "$24.56M", marketCap: '$27.53B', imageUrl: lowGraph, action: 'Trade', },
+  { name: 'PROPC', helperText: 'Propchain', price: '$2.03', change: '-45', volume: "$24.56M", marketCap: '$27.53B', imageUrl: lowGraph, action: 'Trade', },
+  { name: 'PROPC', helperText: 'Propchain', price: '$2.03', change: '-45', volume: "$24.56M", marketCap: '$27.53B', imageUrl: lowGraph, action: 'Trade', },
+];
+
 const CardContainer = () => {
   return (
     <Stack direction='row'>
-      {cardData.map((card, index) => (
+      {gridData.map((card, index) => (
         <Paper elevation={3} style={{ width: '320px', height: '535px', margin: '10px' }} key={index}>
           <div> {/* Wrap the Card in a container */}
             <Card>
@@ -131,12 +149,105 @@ const TabPanel = (props) => {
   );
 };
 
+const ModifiedChip = ({ item }) => {
+
+  if (!item || typeof item !== 'string') {
+    return null;
+  }
+
+  const changeValue = item.replace(/[+-]/, '');
+  const isPositive = item.charAt(0) === '+';
+  const isNegative = item.charAt(0) === '-';
+  const hasIcon = isPositive || isNegative;
+
+  return (
+    <Chip
+      icon={hasIcon && (
+        isPositive ? (
+          <ArrowUpwardIcon style={{ width: "18px", backgroundColor: '#E7F6EC', color: '#036B26' }} />
+        ) : (
+          <ArrowDownwardIcon style={{ width: "18px", backgroundColor: '#FBEAE9', color: '#9E0A05' }} />
+        )
+      )}
+      label={`${changeValue}%`}
+      style={{
+        backgroundColor: isPositive ? '#E7F6EC' : (isNegative ? '#FBEAE9' : '#F0F2F5'),
+        color: isPositive ? '#036B26' : (isNegative ? '#9E0A05' : '#344054'),
+      }}
+    />
+  );
+};
+
+const MarketTable = ({ data }) => {
+
+  return (
+    <TableContainer component={Paper}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Name</TableCell>
+            <TableCell>Price</TableCell>
+            <TableCell>24h Change</TableCell>
+            <TableCell>Volume (24h)</TableCell>
+            <TableCell>Market Cap</TableCell>
+            <TableCell>24H Trend</TableCell>
+            <TableCell>Action</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {data.map((item, index) => (
+            <TableRow key={index}>
+              {/* 1st Column */}
+              <TableCell>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <img src={ControlSvg} alt="Control Icon" style={{ width: '24px', height: '24px', marginRight: '8px' }} />
+                  <div style={{ marginLeft: '8px', display: 'flex', flexDirection: "column", alignItems: 'center' }}>
+
+                    <span style={{}}>{item.name}</span>
+                    <span style={{ fontSize: "13px" }}>{item.helperText}</span>
+                  </div>
+                </div>
+              </TableCell>
+              {/* 2nd Column */}
+              <TableCell>{item.price}</TableCell>
+              {/* 3rd Column */}
+              <TableCell>
+                <ModifiedChip item={item.change} />
+              </TableCell>
+              {/* 4th Column */}
+              <TableCell>{item.volume}</TableCell>
+              <TableCell>{item.marketCap}</TableCell>
+              {/* 5th Column */}
+              <TableCell>
+                <img src={item.imageUrl} alt="Control Icon" style={{ width: '200px', height: '50px', marginRight: '8px' }} />
+              </TableCell>
+              <TableCell>
+                <Typography variant="p" style={{ color: "#2E3A5C" }}>
+                  {item.action}
+                </Typography>
+                <Typography ml={3} variant="p" color="text.secondary">
+                  Details
+                </Typography>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+};
+
 
 function Market() {
   const [value, setValue] = useState(0);
+  const [isListView, setIsListView] = useState(true);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const handleSwitchView = (isList) => {
+    setIsListView(isList);
   };
 
   return (
@@ -171,29 +282,45 @@ function Market() {
                 ),
               }}
             />
-            <Button variant="contained" style={{ marginRight: '10px', backgroundColor: "#fff", border: "1px solid #2E3A5C" }}>
+            <Button variant="contained"
+              style={{ marginRight: '10px', backgroundColor: "#fff", border: "1px solid #2E3A5C" }}
+              className={isListView ? "active" : ""}
+              onClick={() => handleSwitchView(true)}
+            >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M21.5 4H7.5" stroke="#2E3A5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M21.5 12H7.5" stroke="#2E3A5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M21.5 20H7.5" stroke="#2E3A5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M21.5 4H7.5" stroke={isListView ? "white" : "#2E3A5C"} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M21.5 12H7.5" stroke={isListView ? "white" : "#2E3A5C"} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M21.5 20H7.5" stroke={isListView ? "white" : "#2E3A5C"} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 <circle cx="1.25" cy="1.25" r="1.25" transform="matrix(-1 0 0 1 4.5 2.75)" fill="#2E3A5C" />
                 <circle cx="1.25" cy="1.25" r="1.25" transform="matrix(-1 0 0 1 4.5 10.75)" fill="#2E3A5C" />
                 <circle cx="1.25" cy="1.25" r="1.25" transform="matrix(-1 0 0 1 4.5 18.75)" fill="#2E3A5C" />
               </svg>
             </Button>
-            <Button variant="outlined" style={{ color: "#fff", background: "#2E3A5C" }} >
+            <Button variant="outlined"
+              className={!isListView ? "active" : ""}
+              onClick={() => handleSwitchView(false)}
+              style={{ marginRight: '10px', backgroundColor: "#fff", border: "1px solid #2E3A5C",}}
+            >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" >
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M4 11.5C2.61929 11.5 1.5 10.3807 1.5 9V4C1.5 2.61929 2.61929 1.5 4 1.5H9C10.3807 1.5 11.5 2.61929 11.5 4V9C11.5 10.3807 10.3807 11.5 9 11.5H4ZM3.5 9C3.5 9.27614 3.72386 9.5 4 9.5L9 9.5C9.27614 9.5 9.5 9.27614 9.5 9V4C9.5 3.72386 9.27614 3.5 9 3.5L4 3.5C3.72386 3.5 3.5 3.72386 3.5 4L3.5 9Z" fill="white" />
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 20C1.5 21.3807 2.61929 22.5 4 22.5H9C10.3807 22.5 11.5 21.3807 11.5 20V15C11.5 13.6193 10.3807 12.5 9 12.5H4C2.61929 12.5 1.5 13.6193 1.5 15V20ZM4 20.5C3.72386 20.5 3.5 20.2761 3.5 20L3.5 15C3.5 14.7239 3.72386 14.5 4 14.5H9C9.27614 14.5 9.5 14.7239 9.5 15V20C9.5 20.2761 9.27614 20.5 9 20.5H4Z" fill="white" />
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 20C12.5 21.3807 13.6193 22.5 15 22.5H20C21.3807 22.5 22.5 21.3807 22.5 20V15C22.5 13.6193 21.3807 12.5 20 12.5H15C13.6193 12.5 12.5 13.6193 12.5 15V20ZM15 20.5C14.7239 20.5 14.5 20.2761 14.5 20V15C14.5 14.7239 14.7239 14.5 15 14.5H20C20.2761 14.5 20.5 14.7239 20.5 15V20C20.5 20.2761 20.2761 20.5 20 20.5H15Z" fill="white" />
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 9C12.5 10.3807 13.6193 11.5 15 11.5H20C21.3807 11.5 22.5 10.3807 22.5 9V4C22.5 2.61929 21.3807 1.5 20 1.5H15C13.6193 1.5 12.5 2.61929 12.5 4V9ZM15 9.5C14.7239 9.5 14.5 9.27614 14.5 9V4C14.5 3.72386 14.7239 3.5 15 3.5L20 3.5C20.2761 3.5 20.5 3.72386 20.5 4V9C20.5 9.27614 20.2761 9.5 20 9.5L15 9.5Z" fill="white" />
+                <path fillRule="evenodd" stroke={!isListView ? "white" : "#2E3A5C"} clipRule="evenodd" d="M4 11.5C2.61929 11.5 1.5 10.3807 1.5 9V4C1.5 2.61929 2.61929 1.5 4 1.5H9C10.3807 1.5 11.5 2.61929 11.5 4V9C11.5 10.3807 10.3807 11.5 9 11.5H4ZM3.5 9C3.5 9.27614 3.72386 9.5 4 9.5L9 9.5C9.27614 9.5 9.5 9.27614 9.5 9V4C9.5 3.72386 9.27614 3.5 9 3.5L4 3.5C3.72386 3.5 3.5 3.72386 3.5 4L3.5 9Z" fill="white" />
+                <path fillRule="evenodd" stroke={!isListView ? "white" : "#2E3A5C"} clipRule="evenodd" d="M1.5 20C1.5 21.3807 2.61929 22.5 4 22.5H9C10.3807 22.5 11.5 21.3807 11.5 20V15C11.5 13.6193 10.3807 12.5 9 12.5H4C2.61929 12.5 1.5 13.6193 1.5 15V20ZM4 20.5C3.72386 20.5 3.5 20.2761 3.5 20L3.5 15C3.5 14.7239 3.72386 14.5 4 14.5H9C9.27614 14.5 9.5 14.7239 9.5 15V20C9.5 20.2761 9.27614 20.5 9 20.5H4Z" fill="white" />
+                <path fillRule="evenodd" stroke={!isListView ? "white" : "#2E3A5C"} clipRule="evenodd" d="M12.5 20C12.5 21.3807 13.6193 22.5 15 22.5H20C21.3807 22.5 22.5 21.3807 22.5 20V15C22.5 13.6193 21.3807 12.5 20 12.5H15C13.6193 12.5 12.5 13.6193 12.5 15V20ZM15 20.5C14.7239 20.5 14.5 20.2761 14.5 20V15C14.5 14.7239 14.7239 14.5 15 14.5H20C20.2761 14.5 20.5 14.7239 20.5 15V20C20.5 20.2761 20.2761 20.5 20 20.5H15Z" fill="white" />
+                <path fillRule="evenodd" stroke={!isListView ? "white" : "#2E3A5C"} clipRule="evenodd" d="M12.5 9C12.5 10.3807 13.6193 11.5 15 11.5H20C21.3807 11.5 22.5 10.3807 22.5 9V4C22.5 2.61929 21.3807 1.5 20 1.5H15C13.6193 1.5 12.5 2.61929 12.5 4V9ZM15 9.5C14.7239 9.5 14.5 9.27614 14.5 9V4C14.5 3.72386 14.7239 3.5 15 3.5L20 3.5C20.2761 3.5 20.5 3.72386 20.5 4V9C20.5 9.27614 20.2761 9.5 20 9.5L15 9.5Z" fill="white" />
               </svg>
             </Button>
           </Stack>
         </Stack>
-        <CardContainer />
-        <CardContainer />
-        <CardContainer />
+        <Stack direction="column">
+          {isListView ? (
+            <MarketTable data={listData} />
+          ) : (
+            <>
+              <CardContainer />
+              <CardContainer />
+              <CardContainer />
+            </>
+          )}
+        </Stack>
         <Stack alignItems="center">
 
           <Pagination count={10} variant="outlined" shape="rounded" />
