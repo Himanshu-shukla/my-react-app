@@ -2,7 +2,7 @@
 const buttons = [
     { id: 1, label: '1. Login', url: '/login' },
     { id: 2, label: '2. Signup', url: '/signup' },
-    { id: 3, label: '3. Home-Gainers', url: '/gainers' },
+    { id: 3, label: '3. Home-Gainers', url: '/' },
     { id: 4, label: '4. Home-Losers', url: '/losers' },
     { id: 5, label: '5. Home - New Listings', url: '/newlistings' },
     { id: 6, label: '6. Home - Asset details page', url: '/asset-details' },

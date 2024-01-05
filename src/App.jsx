@@ -4,7 +4,7 @@ import NavigationBar from './components/NavigationBar';
 
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Gainers from './pages/Gainers';
+import Home from './pages/Home';
 import Losers from './pages/Losers';
 import NewListings from './pages/NewListings';
 import AssetDetails from './pages/AssetDetails';
@@ -44,6 +44,7 @@ import FAQs from './pages/FAQs';
 import JunaBlog from './pages/JunaBlog';
 
 import buttons from './buttonData';
+// import { Home } from '@mui/icons-material';
 
 const App = () => {
   return (
@@ -76,10 +77,10 @@ const AppContent = () => {
     <div >
       <div style={{ display: 'flex' }}>
         <Routes>
-        <Route path="/" element={<Buttons buttons={buttons} navigate={navigate} />} />
+        <Route path="/button" element={<Buttons buttons={buttons} navigate={navigate} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/gainers" element={<Gainers />} />
+          <Route path="/" element={<Home />} />
           <Route path="/losers" element={<Losers />} />
           <Route path="/newlistings" element={<NewListings />} />
           <Route path="/asset-details" element={<AssetDetails />} />

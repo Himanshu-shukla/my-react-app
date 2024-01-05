@@ -1,8 +1,9 @@
 import React from 'react'
+import P2PTradingLineChart from './P2PTradingLineChart'
 
 function P2PTradingLineChart2() {
   return (
-    <div>P2PTradingLineChart2</div>
+    <P2PTradingLineChart></P2PTradingLineChart>
   )
 }
 

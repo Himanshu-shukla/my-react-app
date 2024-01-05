@@ -1,13 +1,9 @@
 import React from 'react'
-import NavigationBar from '../components/NavigationBar'
+import P2PTradingLineChart from './P2PTradingLineChart'
 
 function P2PTradingLineChart3() {
   return (
-    <>
-      <NavigationBar />
-      <div>P2PTradingLineChart3</div>
-    </>
-    
+    <P2PTradingLineChart></P2PTradingLineChart>
   )
 }
 

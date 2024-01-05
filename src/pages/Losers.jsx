@@ -1,5 +1,5 @@
 import React from 'react'
-import Gainers from './Gainers'
+import Gainers from './Home'
 
 
 function Losers() {
