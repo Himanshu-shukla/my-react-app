@@ -76,9 +76,11 @@ const AssetTableComponent = () => {
                 <Typography variant="p" >
                   {row.action}
                 </Typography>
-                <Typography ml={3} variant="p" color="text.secondary">
-                  Details
-                </Typography>
+                <Link to="/asset-detail">
+                  <Typography ml={3} variant="p" color="text.secondary">
+                    Details
+                  </Typography>
+                </Link>
               </TableCell>
             </TableRow>
           ))}

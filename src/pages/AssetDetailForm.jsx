@@ -17,7 +17,7 @@ import {
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
-function AssetTokenisationForm({ initialStep = 0 }) {
+function AssetDetailForm({ initialStep = 0 }) {
   const steps = ['Asset Details', 'Technology & Infrastructure', 'Crop & LiveStock', 'Blockchain Details', 'KYC Verification'];
   const [activeStep, setActiveStep] = React.useState(initialStep);
 
@@ -475,4 +475,4 @@ const arrowIconStyle = {
   color: "#2E3A5C"
 }
 
-export default AssetTokenisationForm
+export default AssetDetailForm

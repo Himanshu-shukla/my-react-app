@@ -1,5 +1,5 @@
 import React from 'react'
-import AssetTokenisationForm from './AssetTokenisationForm'
+import AssetTokenisationForm from './AssetDetailForm'
 
 
 function AssetTokenisationForm3() {

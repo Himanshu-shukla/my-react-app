@@ -7,7 +7,6 @@ import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Losers from './pages/Losers';
 import NewListings from './pages/NewListings';
-import AssetDetails from './pages/AssetDetails';
 import SettingProfile from './pages/SettingProfile';
 import SettingWallet from './pages/SettingWallet';
 import SettingVerification from './pages/SettingVerification';
@@ -23,7 +22,7 @@ import Deposit from './pages/Deposit';
 import WithdrawTransfer from './pages/WithdrawTransfer';
 import WithdrawTransferConfirmation from './pages/WithdrawTransferConfirmation';
 import BuyCryptocurrency from './pages/BuyCryptocurrency';
-import AssetTokenisationForm from './pages/AssetTokenisationForm';
+import AssetDetailForm from './pages/AssetDetailForm';
 import AssetTokenisationForm2 from './pages/AssetTokenisationForm2';
 import AssetTokenisationForm3 from './pages/AssetTokenisationForm3';
 import AssetTokenisationForm4 from './pages/AssetTokenisationForm4';
@@ -83,7 +82,6 @@ const AppContent = () => {
           <Route path="/" element={<Home />} />
           <Route path="/losers" element={<Losers />} />
           <Route path="/newlistings" element={<NewListings />} />
-          <Route path="/asset-details" element={<AssetDetails />} />
           <Route path="/setting-profile" element={<SettingProfile />} />
           <Route path="/setting-wallet" element={<SettingWallet />} />
           <Route path="/setting-verification" element={<SettingVerification />} />
@@ -99,7 +97,7 @@ const AppContent = () => {
           <Route path="/withdraw-tansfer" element={<WithdrawTransfer />} />
           <Route path="/wt-confirmation" element={<WithdrawTransferConfirmation />} />
           <Route path="/buy-crypto" element={<BuyCryptocurrency />} />
-          <Route path="/asset-token" element={<AssetTokenisationForm />} />
+          <Route path="/asset-detail" element={<AssetDetailForm />} />
           <Route path="/asset-token-2" element={<AssetTokenisationForm2 />} />
           <Route path="/asset-token-3" element={<AssetTokenisationForm3 />} />
           <Route path="/asset-token-4" element={<AssetTokenisationForm4 />} />
