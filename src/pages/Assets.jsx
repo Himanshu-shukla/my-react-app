@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import NavigationBar from '../components/NavigationBar';
 import { Stack, Chip, Grid, Button, Card, CardContent, IconButton, Typography } from '@mui/material'
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -96,8 +97,12 @@ function Assets() {
         <Stack direction="row" spacing={85} justifyContent="space-between" alignItems="center" >
           <Typography variant="h5" style={{ fontWeight: "700" }}> Wallet</Typography>
           <Stack direction="row" spacing={1}>
-            <Button variant="contained" style={{ background: "#2E3A5C" }}>Deposit</Button>
-            <Button variant="outlined" style={{ color: "#2E3A5C", border: "1px solid #2E3A5C" }}>Withdraw</Button>
+            <Link to="/deposit" style={{ textDecoration: 'none' }}>
+              <Button variant="contained" style={{ background: "#2E3A5C" }}>Deposit</Button>
+            </Link>
+            <Link to="/withdraw-tansfer" style={{ textDecoration: 'none' }}>
+              <Button variant="outlined" style={{ color: "#2E3A5C", border: "1px solid #2E3A5C" }}>Withdraw</Button>
+            </Link>
           </Stack>
         </Stack>
         <Stack direction="row" mt={2} style={{ padding: "15px" }}>
@@ -156,8 +161,8 @@ function Assets() {
         </Stack>
         <Stack direction="row" justifyContent={'space-between'}>
 
-        <Typography mt={3} style={{ fontWeight: "700" }} variant='h5'> Your Assets</Typography>
-      
+          <Typography mt={3} style={{ fontWeight: "700" }} variant='h5'> Your Assets</Typography>
+
         </Stack>
         <AssetTableComponent />
       </Stack>
