@@ -438,11 +438,11 @@ const TwoStackedContainers = () => {
             <div style={{ display: "flex", gap: "8px" }}>
               <button style={{
                 width: "46px", height: "36px",
-                backgroundColor: "#2E3A5C",
+                backgroundColor: activeButton === 'candlestick' ? '#2E3A5C' : '#fff',
                 padding: "2px 3px",
                 borderRadius: '6px',
                 border: "solid 1px #2E3A5C",
-                color: "#fff"
+                color: activeButton === 'candlestick' ? '#fff' : '#2E3A5C',
               }}
                 onClick={() => handleButtonClick('candlestick')}
               >
@@ -450,11 +450,11 @@ const TwoStackedContainers = () => {
               </button>
               <button style={{
                 width: "46px", height: "36px",
-                color: "#2E3A5C",
+                backgroundColor: activeButton === 'trendingUp' ? '#2E3A5C' : '#fff',
                 padding: "2px 3px",
                 borderRadius: '6px',
                 border: "solid 1px #2E3A5C",
-                backgroundColor: "#fff"
+                color: activeButton === 'trendingUp' ? '#fff' : '',
               }}
                 onClick={() => handleButtonClick('trendingUp')}
               >
@@ -462,11 +462,11 @@ const TwoStackedContainers = () => {
               </button>
               <button style={{
                 width: "46px", height: "36px",
-                color: "#2E3A5C",
+                backgroundColor: activeButton === 'camera' ? '#2E3A5C' : '#fff',
                 padding: "2px 3px",
                 borderRadius: '6px',
                 border: "solid 1px #2E3A5C",
-                backgroundColor: "#fff"
+                color: activeButton === 'camera' ? '#fff' : '',
               }}
                 onClick={() => handleButtonClick('camera')}
               >
@@ -474,11 +474,11 @@ const TwoStackedContainers = () => {
               </button>
               <button style={{
                 width: "46px", height: "36px",
-                color: "#2E3A5C",
+                backgroundColor: activeButton === 'setting' ? '#2E3A5C' : '#fff',
                 padding: "2px 3px",
                 borderRadius: '6px',
                 border: "solid 1px #2E3A5C",
-                backgroundColor: "#fff"
+                color: activeButton === 'setting' ? '#fff' : '',
               }}
                 onClick={() => handleButtonClick('setting')}
               >
