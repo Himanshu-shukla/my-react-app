@@ -14,6 +14,7 @@ import {
   Checkbox,
   FormControlLabel,
 } from '@mui/material';
+import { Link } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
@@ -33,9 +34,12 @@ function AssetDetailForm({ initialStep = 0 }) {
     <Container>
       <Stack m={5} direction="row" justifyContent="space-between">
 
-        <Button style={returnbtn}>
-          <ArrowBackIcon style={arrowIconStyle} />
-          Return to Home</Button>
+        <Link to="/assets">
+          <Button style={returnbtn}>
+            <ArrowBackIcon style={arrowIconStyle} />
+            Return to Home
+          </Button>
+        </Link>
         <Button >Eng</Button>
       </Stack>
       <Stepper activeStep={activeStep} alternativeLabel>
