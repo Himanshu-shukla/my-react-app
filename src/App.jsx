@@ -106,7 +106,7 @@ const AppContent = () => {
           <Route path="/delist-asset-token-2" element={<DelistAssetTokenForm2 />} />
           <Route path="/delist-asset-token-3" element={<DelistAssetTokenForm3 />} />
           <Route path="/delist-asset-token-4" element={<DelistAssetTokenForm4 />} />
-          <Route path="/customerSupport" element={<CustomerSupport />} />
+          <Route path="/customer-support" element={<CustomerSupport />} />
           <Route path="/customerSupport-chat" element={<CustomerSupportChat />} />
           <Route path="/ico-page-ongoing" element={<ICOPageOngoing />} />
           <Route path="/ico-page-upcoming" element={<ICOPageUpcoming />} />
