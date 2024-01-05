@@ -1,5 +1,5 @@
 import NavigationBar from '../components/NavigationBar';
-import React from 'react'
+import React, { useState } from 'react'
 import { Container, Grid, Paper, Stack, Box, Tabs, Tab, TextField, Button, ButtonGroup } from '@mui/material';
 import { Avatar, Chip, Typography } from '@mui/material';
 import { ArrowDropDown } from '@mui/icons-material';
@@ -14,6 +14,7 @@ import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import TableRow from '@mui/material/TableRow';
 import chartImg from '../assets/chart.png';
+import chartImg1 from '../assets/chart2.png';
 import picon from '../assets/picon.png';
 
 const useStyles = styled((theme) => ({
@@ -419,7 +420,12 @@ const RightContainer = () => {
 };
 
 const TwoStackedContainers = () => {
-  const classes = useStyles();
+
+  const [activeButton, setActiveButton] = useState('candlestick');
+
+  const handleButtonClick = (button) => {
+    setActiveButton(button);
+  };
 
   return (
     <Grid container spacing={3}>
@@ -437,7 +443,9 @@ const TwoStackedContainers = () => {
                 borderRadius: '6px',
                 border: "solid 1px #2E3A5C",
                 color: "#fff"
-              }}>
+              }}
+                onClick={() => handleButtonClick('candlestick')}
+              >
                 <CandlestickChart />
               </button>
               <button style={{
@@ -447,7 +455,9 @@ const TwoStackedContainers = () => {
                 borderRadius: '6px',
                 border: "solid 1px #2E3A5C",
                 backgroundColor: "#fff"
-              }}>
+              }}
+                onClick={() => handleButtonClick('trendingUp')}
+              >
                 <TrendingUp />
               </button>
               <button style={{
@@ -457,7 +467,9 @@ const TwoStackedContainers = () => {
                 borderRadius: '6px',
                 border: "solid 1px #2E3A5C",
                 backgroundColor: "#fff"
-              }}>
+              }}
+                onClick={() => handleButtonClick('camera')}
+              >
                 <Camera />
               </button>
               <button style={{
@@ -467,7 +479,9 @@ const TwoStackedContainers = () => {
                 borderRadius: '6px',
                 border: "solid 1px #2E3A5C",
                 backgroundColor: "#fff"
-              }}>
+              }}
+                onClick={() => handleButtonClick('setting')}
+              >
                 <Settings />
               </button>
             </div>
@@ -590,7 +604,7 @@ const TwoStackedContainers = () => {
           marginTop: "15px"
         }}>
           <img
-            src={chartImg}
+            src={activeButton === 'candlestick' ? chartImg : chartImg1}
             alt="Your Image"
             style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
           />
