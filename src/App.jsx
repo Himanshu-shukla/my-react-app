@@ -12,7 +12,7 @@ import SettingProfile from './pages/SettingProfile';
 import SettingWallet from './pages/SettingWallet';
 import SettingVerification from './pages/SettingVerification';
 import MarketList from './pages/MarketList';
-import MarketGrid from './pages/MarketGrid';
+import Market from './pages/Market';
 import P2PTrading from './pages/P2PTrading';
 import P2PTradingLineChart from './pages/P2PTradingLineChart';
 import P2PTradingLineChart2 from './pages/P2PTradingLineChart2';
@@ -88,7 +88,7 @@ const AppContent = () => {
           <Route path="/setting-wallet" element={<SettingWallet />} />
           <Route path="/setting-verification" element={<SettingVerification />} />
           <Route path="/market-list" element={<MarketList />} />
-          <Route path="/market-grid" element={<MarketGrid />} />
+          <Route path="/market" element={<Market />} />
           <Route path="/p2p-trading" element={<P2PTrading />} />
           <Route path="/p2p-trading-lc" element={<P2PTradingLineChart />} />
           <Route path="/p2p-trading-lc2" element={<P2PTradingLineChart2 />} />
