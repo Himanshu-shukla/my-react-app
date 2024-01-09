@@ -1,6 +1,7 @@
 import React from 'react';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
+import { Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Table from '@mui/material/Table';
@@ -25,10 +26,10 @@ const CustomerSupportTable = () => {
   };
 
   return (
-    <div style={{width:"75%"}}>
+    <div style={{ width: "75%" }}>
       <Stack direction="row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px' }}>
         <Typography variant="h5">Customer Support</Typography>
-        <Button variant="contained" style={{color:"#fff", background:"#2E3A5C"}}>
+        <Button variant="contained" style={{ color: "#fff", background: "#2E3A5C" }}>
           Open New Ticket
         </Button>
       </Stack>
@@ -51,9 +52,12 @@ const CustomerSupportTable = () => {
                   <Chip label={row.category} style={{ backgroundColor: getChipColor(row.category), color: '#ffffff' }} />
                 </TableCell>
                 <TableCell>
-                  <IconButton>
-                    <VisibilityOffIcon />
-                  </IconButton>
+                  <Link to="/account-assistant">
+                    <IconButton>
+                      <VisibilityOffIcon />
+                    </IconButton>
+                  </Link>
+
                 </TableCell>
               </TableRow>
             ))}

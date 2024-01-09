@@ -5,7 +5,7 @@ export default function Main() {
   return (
     <div className='main-container'>
       <div className='wrapper'>
-        <span className='text'>Ticket#019</span>
+        <span className='txt'>Ticket#019</span>
         <span className='text-2'>Account Assistance</span>
         <div className='group'>
           <span className='text-3'>Created</span>
@@ -43,9 +43,9 @@ export default function Main() {
         </div>
       </div>
       <div className='group-4'>
-        <span className='text-9'>Type here</span>
-            <button className='text-a'>Send</button>
-        </div>
+        <input className='text-9' placeholder='Type Here..'/>
+        <button className='text-a'>Send</button>
       </div>
+    </div>
   );
 }
