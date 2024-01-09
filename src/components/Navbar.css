@@ -71,14 +71,14 @@ color: white;
 
 .second-div .search {
     display: flex;
-    height: 24px;
+    height: 33px;
     padding: 8px 12px;
     align-items: center;
     gap: 12px;
     align-self: stretch;
     border-radius: 6px;
-    border: 1px solid var(--Grey-300, #D0D5DD);
-    background: var(--Shade-White, #FFF);
+    border: 1px solid #D0D5DD;
+    background: #FFF;
 }
 
 .second-div .searchBar {
