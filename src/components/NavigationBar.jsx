@@ -144,6 +144,22 @@ const NavigationBar = () => {
                 {badgeNumber}
               </span>
             </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5.0003 17.5001L7.5003 2.50008M12.5003 17.5001L15.0003 2.50007M3.33363 6.66674L17.5003 6.66674M2.50027 13.3334L16.6669 13.3334" stroke="#101928" stroke-width="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <Link to="/juna-blog" style={{
+                textDecoration: 'none',
+                color: 'var(--Primary, #2E3A5C)',
+                fontFamily: 'Inter',
+                fontSize: '14px',
+                fontStyle: 'normal',
+                fontWeight: 500,
+                lineHeight: '20px',
+                marginLeft: '5px',
+                flex: '1 0 0',
+              }}>Juna Blog</Link>
+            </li>
           </ul>
         </div>
       </div>
