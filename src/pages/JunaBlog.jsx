@@ -21,12 +21,12 @@ function JunaBlog() {
         <Header leftText='Home'></Header>
         <Container>
           {/* Heading */}
-          <Typography mt={4} variant="h4" align="left" style={{lineHeight:"20px", fontSize:"32px", fontWeight:"700"}} gutterBottom>
+          <Typography mt={5} variant="h4" align="left" style={{lineHeight:"20px", fontSize:"32px", fontWeight:"700"}} gutterBottom>
             Check out Our Juna Blog
           </Typography>
 
           {/* Blog Containers */}
-          <Grid container spacing={2}>
+          <Grid container spacing={2} mt={4}>
           <BlogContainer imageUrl={imageUrl}></BlogContainer>
           <BlogContainer imageUrl={imageUrl1}></BlogContainer>
           <BlogContainer imageUrl={imageUrl2}></BlogContainer>
