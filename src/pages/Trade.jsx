@@ -1,18 +1,18 @@
 import NavigationBar from '../components/NavigationBar';
 import React, { useState } from 'react'
-import { Container, Grid, Paper, Stack, Box, Tabs, Tab, TextField, Button, ButtonGroup } from '@mui/material';
+import Modal from 'react-modal';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import { Container, Grid, Paper, Stack, Box, Tabs, Tab, TextField, Button, InputAdornment, Input , ButtonGroup } from '@mui/material';
 import { Avatar, Chip, Typography } from '@mui/material';
 import { ArrowDropDown } from '@mui/icons-material';
+import SearchIcon from '@mui/icons-material/Search';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { CandlestickChart, TrendingUp, Camera, Settings } from '@mui/icons-material';
 import { styled } from "@mui/system";
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
+import ControlSvg from '../assets/Control.svg'
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
-import TableRow from '@mui/material/TableRow';
 import chartImg from '../assets/chart.png';
 import chartImg1 from '../assets/chart2.png';
 import picon from '../assets/picon.png';
@@ -32,7 +32,7 @@ const useStyles = styled((theme) => ({
 
 const PageTabs = () => {
   return (
-    <Paper style={{ margin:"20px", height: 'auto', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
+    <Paper style={{ margin: "20px", height: 'auto', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
       {/* Button 1 */}
       <Button variant="contained" style={{ boxShadow: "none", color: "#2E3A5C", background: "#fff" }}>
         <Avatar sx={{ width: 32, height: 32, marginRight: 2 }}>
@@ -362,7 +362,130 @@ const SellComponent = () => {
   );
 };
 
-const LeftContainer = () => {
+const CustomModal = ({ isOpen, onRequestClose }) => {
+  const [activeTab, setActiveTab] = useState('Trending');
+
+  const tabs = ['Favourite', 'Trending', 'New Listing'];
+  const buttons = ['All', 'USTD', 'ETH', 'USDC'];
+
+  const modelData = [
+    { name: 'PROPC', price: '$2.03', change: '+45' },
+    { name: 'PROPC', price: '$2.03', change: '+45' },
+    { name: 'PROPC', price: '$2.03', change: '+45' },
+    { name: 'AnotherCoin', price: '$5.25', change: '-10' },
+    { name: 'AnotherCoin', price: '$5.25', change: '-10' },
+  ];
+
+  return (
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      contentLabel="Example Modal"
+      style={{
+        overlay: {
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        },
+        content: {
+          width: '475px',
+          margin: 'auto',
+          display: 'flex',
+          flexDirection: 'column',
+          right: '25%',
+          top: '25%', 
+        },
+      }}
+    >
+      {/* Search Bar */}
+      <Input
+        type="text"
+        placeholder="Search"
+        style={{ width: '100%', padding: '10px', border: '1px solid #2E3A5C', borderRadius: '3px' }}
+        startAdornment={
+          <InputAdornment position="start">
+            <SearchIcon />
+          </InputAdornment>
+        }
+      />
+      {/* Tabs */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px' }}>
+        {tabs.map(tab => (
+          <div
+            key={tab}
+            style={{ cursor: 'pointer', borderBottom: activeTab === tab ? '2px solid blue' : 'none' }}
+            onClick={() => setActiveTab(tab)}
+          >
+            {tab}
+          </div>
+        ))}
+      </div>
+
+      {/* Buttons */}
+      <Stack direction="row" spacing={2}>
+        {buttons.map(button => (
+          <Button key={button} style={{ border: "1px solid gray", borderRadius: "8px", color: "#2E3A5C" }}>{button}</Button>
+        ))}
+      </Stack>
+
+      <TableContainer component={Paper} style={{ padding: '12px' }}>
+        <Table style={{ minWidth: 300 }}>
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell>Price</TableCell>
+              <TableCell>24h Change</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {modelData.map((item, index) => (
+              <TableRow key={index}>
+                <TableCell style={{ display: 'flex', alignItems: 'center' }}>
+                  <img src={ControlSvg} alt="Control Icon" style={{ width: '24px', height: '24px', marginRight: '8px' }} />
+                  {item.name}
+                </TableCell>
+                <TableCell>{item.price}</TableCell>
+                <TableCell>
+                  <ModifiedChip label={item.change} />
+                  <div>{/* Up Arrow or Chip component */}</div>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Modal>
+  );
+};
+
+const ModifiedChip = ({ label }) => {
+
+  if (!label || typeof label !== 'string') {
+    return null;
+  }
+
+  const changeValue = label.replace(/[+-]/, '');
+  const isPositive = label.charAt(0) === '+';
+  const isNegative = label.charAt(0) === '-';
+  const hasIcon = isPositive || isNegative;
+
+  return (
+    <Chip
+      icon={hasIcon && (
+        isPositive ? (
+          <ArrowUpwardIcon style={{ width: "18px", backgroundColor: '#E7F6EC', color: '#036B26' }} />
+        ) : (
+          <ArrowDownwardIcon style={{ width: "18px", backgroundColor: '#FBEAE9', color: '#9E0A05' }} />
+        )
+      )}
+      label={`${changeValue}%`}
+      style={{
+        backgroundColor: isPositive ? '#E7F6EC' : (isNegative ? '#FBEAE9' : '#F0F2F5'),
+        color: isPositive ? '#036B26' : (isNegative ? '#9E0A05' : '#344054'),
+      }}
+    />
+  );
+};
+
+const LeftContainer = ({ openModal }) => {
   return (
     <div style={{ display: 'flex', flexDirection: "row", alignItems: 'center', padding: 5 }}>
       <Avatar >
@@ -370,12 +493,14 @@ const LeftContainer = () => {
       </Avatar>
       <div style={{ display: 'flex', flexDirection: "row", alignItems: 'center', marginLeft: 20, justifyContent: "space-around" }}>
         <Typography variant="body1">PROPC</Typography>
-        <ArrowDropDown />
+        <Button onClick={openModal} style={{outline:"none"}}>
+          <ArrowDropDown />
+        </Button>
 
         <Typography ml={2} variant="body1" fontWeight="bold">
           $2.38
         </Typography>
-        <Chip ml={1} size="small" label="5.26% (1D)" style={{ backgroundColor: "#E7F6EC", color: "#036B26" }} />
+        <ModifiedChip label="+45%" />
       </div>
     </div>
   );
@@ -645,17 +770,27 @@ const TwoStackedContainers = () => {
 };
 
 function Trade() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <NavigationBar></NavigationBar>
       <Stack direction="column" style={{ width: "80%" }}>
         <Header leftText="Trade" rightText="PROPC-USDT"></Header>
-        <PageTabs  />
+        <PageTabs />
         <Container>
           <Grid container spacing={3}>
             <Grid item xs={6}>
               <Paper style={{ height: 50 }}>
-                <LeftContainer />
+                <LeftContainer openModal={openModal} />
+                <CustomModal isOpen={isModalOpen} onRequestClose={closeModal} />
               </Paper>
             </Grid>
             <Grid item xs={6}>
