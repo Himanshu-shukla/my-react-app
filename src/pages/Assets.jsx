@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import NavigationBar from '../components/NavigationBar';
+import Header from '../components/Header';
 import { Stack, Chip, Grid, Button, Card, CardContent, IconButton, Typography } from '@mui/material'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -95,8 +96,9 @@ function Assets() {
   return (
     <>
       <NavigationBar />
-      <Stack direction="column" style={{ width: "70%" }}>
-        <Stack direction="row" spacing={85} justifyContent="space-between" alignItems="center" >
+      <Stack direction="column" style={{ width: "75%" }}>
+        <Header leftText="Assets"></Header>
+        <Stack direction="row" mt={4} spacing={85} justifyContent="space-between" alignItems="center" >
           <Typography variant="h5" style={{ fontWeight: "700" }}> Wallet</Typography>
           <Stack direction="row" spacing={1}>
             <Link to="/deposit" style={{ textDecoration: 'none' }}>

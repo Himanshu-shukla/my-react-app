@@ -26,7 +26,7 @@ const CustomerSupportTable = () => {
   };
 
   return (
-    <div style={{ width: "75%" }}>
+    <div >
       <Stack direction="row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px' }}>
         <Typography variant="h5">Customer Support</Typography>
         <Button variant="contained" style={{ color: "#fff", background: "#2E3A5C" }}>

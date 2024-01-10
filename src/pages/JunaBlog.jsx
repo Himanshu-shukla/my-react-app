@@ -3,6 +3,7 @@ import { Container, Stack, Typography, Grid, Paper } from '@mui/material';
 
 import NavigationBar from '../components/NavigationBar';
 import BlogContainer from '../components/BlogContainer';
+import Header from '../components/Header';
 
 function JunaBlog() {
 
@@ -17,6 +18,7 @@ function JunaBlog() {
     <>
       <NavigationBar />
       <Stack direction="column">
+        <Header leftText='Home'></Header>
         <Container>
           {/* Heading */}
           <Typography mt={4} variant="h4" align="left" style={{lineHeight:"20px", fontSize:"32px", fontWeight:"700"}} gutterBottom>

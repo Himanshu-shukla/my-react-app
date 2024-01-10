@@ -284,7 +284,7 @@ function Market() {
             />
             <Button variant="contained"
               style={{ marginRight: '10px', backgroundColor: "#fff", border: "1px solid #2E3A5C" }}
-              className={isListView ? "active" : ""}
+              className={isListView ? "activebtn" : ""}
               onClick={() => handleSwitchView(true)}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -297,7 +297,7 @@ function Market() {
               </svg>
             </Button>
             <Button variant="outlined"
-              className={!isListView ? "active" : ""}
+              className={!isListView ? "activebtn" : ""}
               onClick={() => handleSwitchView(false)}
               style={{ marginRight: '10px', backgroundColor: "#fff", border: "1px solid #2E3A5C",}}
             >
