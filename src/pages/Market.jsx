@@ -8,6 +8,7 @@ import highGraph from '../assets/Container3.svg'
 import lowGraph from '../assets/Container5.svg'
 import ControlSvg from '../assets/Control.svg'
 import './Market.css'
+import Header from '../components/Header';
 
 const gridData = [
   {
@@ -254,6 +255,7 @@ function Market() {
     <>
       <NavigationBar></NavigationBar>
       <Stack direction="column" spacing={5} style={{ width: "100%" }}>
+        <Header leftText="Market"></Header>
         <Stack direction="row" style={{ width: "96%" }} justifyContent={'space-between'}>
           <Tabs value={value} onChange={handleChange} >
             <Tab label="Gainers" />

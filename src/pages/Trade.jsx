@@ -16,6 +16,7 @@ import TableRow from '@mui/material/TableRow';
 import chartImg from '../assets/chart.png';
 import chartImg1 from '../assets/chart2.png';
 import picon from '../assets/picon.png';
+import Header from '../components/Header';
 
 const useStyles = styled((theme) => ({
   btn: {
@@ -31,7 +32,7 @@ const useStyles = styled((theme) => ({
 
 const PageTabs = () => {
   return (
-    <Paper style={{ marginLeft: 20, marginBottom: 20, height: 'auto', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
+    <Paper style={{ margin:"20px", height: 'auto', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
       {/* Button 1 */}
       <Button variant="contained" style={{ boxShadow: "none", color: "#2E3A5C", background: "#fff" }}>
         <Avatar sx={{ width: 32, height: 32, marginRight: 2 }}>
@@ -648,7 +649,8 @@ function Trade() {
     <>
       <NavigationBar></NavigationBar>
       <Stack direction="column" style={{ width: "80%" }}>
-        <PageTabs />
+        <Header leftText="Trade" rightText="PROPC-USDT"></Header>
+        <PageTabs  />
         <Container>
           <Grid container spacing={3}>
             <Grid item xs={6}>

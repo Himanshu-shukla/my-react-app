@@ -1,4 +1,5 @@
 import NavigationBar from '../components/NavigationBar';
+import Header from '../components/Header';
 import React, { useState } from 'react';
 import { Tabs, Tab, Card, Divider, Grid, IconButton, CardContent, CardMedia, Typography, Box } from '@mui/material';
 import { Table, TableBody, TableCell, Button, TableContainer, TableHead, TableRow, Paper, Chip, Avatar } from '@mui/material';
@@ -509,6 +510,7 @@ function Home({ intialTab = 0 }) {
     <>
       <NavigationBar></NavigationBar>
       <Stack direction="column" style={{ width: "100%" }}>
+        <Header leftText="Home"></Header>
         <TopCards ></TopCards>
         <div>
           <Tabs value={value} onChange={handleChange} >

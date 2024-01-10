@@ -23,7 +23,28 @@ const FAQIcon = () => (
     </svg>
 );
 
-const Header = ({ leftText }) => {
+const MarketIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M4.41075 12.4664C4.08532 12.7918 4.08532 13.3195 4.41075 13.6449C4.73619 13.9703 5.26383 13.9703 5.58927 13.6449L8.38982 10.8443L9.4729 11.7289C9.81323 12.0068 10.3109 11.9727 10.6102 11.651L13.3357 8.72103L14.3921 9.84781C14.7068 10.1836 15.2342 10.2006 15.57 9.8858C15.9057 9.57103 15.9227 9.04366 15.608 8.7079L13.9413 6.93013C13.7834 6.76167 13.5626 6.6663 13.3317 6.66674C13.1008 6.66719 12.8805 6.76343 12.7232 6.93249L9.92199 9.94378L8.86045 9.07686C8.52908 8.80623 8.04661 8.83052 7.74409 9.13304L4.41075 12.4664Z" fill="black" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M4.16668 2.5C2.32573 2.5 0.833344 3.99239 0.833344 5.83333V14.1667C0.833344 16.0076 2.32573 17.5 4.16668 17.5H15.8333C17.6743 17.5 19.1667 16.0076 19.1667 14.1667V5.83333C19.1667 3.99239 17.6743 2.5 15.8333 2.5H4.16668ZM2.50001 5.83333C2.50001 4.91286 3.2462 4.16667 4.16668 4.16667H15.8333C16.7538 4.16667 17.5 4.91286 17.5 5.83333V14.1667C17.5 15.0871 16.7538 15.8333 15.8333 15.8333H4.16668C3.2462 15.8333 2.50001 15.0871 2.50001 14.1667V5.83333Z" fill="black" />
+    </svg>
+);
+
+const TradeIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <g clipPath="url(#clip0_713_9389)">
+            <path d="M8.82149 0.916992C8.36125 0.916992 7.98815 1.29009 7.98815 1.75033C7.98815 2.21056 8.36125 2.58366 8.82149 2.58366H10.3452L1.16116 11.7677C0.835725 12.0931 0.835725 12.6207 1.16116 12.9462C1.4866 13.2716 2.01424 13.2716 2.33967 12.9462L11.5237 3.76217V5.28586C11.5237 5.7461 11.8968 6.11919 12.357 6.11919C12.8173 6.11919 13.1904 5.7461 13.1904 5.28586V1.75033C13.1904 1.29009 12.8173 0.916992 12.357 0.916992H8.82149Z" fill="black" />
+            <path d="M18.8388 8.23222C19.1643 7.90678 19.1643 7.37915 18.8388 7.05371C18.5134 6.72827 17.9858 6.72827 17.6603 7.05371L8.47631 16.2377V14.714C8.47631 14.2538 8.10322 13.8807 7.64298 13.8807C7.18274 13.8807 6.80965 14.2538 6.80965 14.714V18.2496C6.80965 18.7098 7.18274 19.0829 7.64298 19.0829H11.1785C11.6388 19.0829 12.0118 18.7098 12.0118 18.2496C12.0118 17.7893 11.6388 17.4162 11.1785 17.4162H9.65482L18.8388 8.23222Z" fill="black" />
+        </g>
+        <defs>
+            <clipPath id="clip0_713_9389">
+                <rect width="20" height="20" fill="white" />
+            </clipPath>
+        </defs>
+    </svg>
+);
+
+const Header = ({ leftText, rightText }) => {
     let leftIcon;
 
     switch (leftText) {
@@ -32,6 +53,12 @@ const Header = ({ leftText }) => {
             break;
         case 'Home':
             leftIcon = <HomeIcon />;
+            break;
+        case 'Market':
+            leftIcon = <MarketIcon />;
+            break;
+        case 'Trade':
+            leftIcon = <TradeIcon />;
             break;
         case 'FAQs':
             leftIcon = <FAQIcon />;
@@ -49,8 +76,9 @@ const Header = ({ leftText }) => {
                     <IconButton color="inherit">
                         {leftIcon}
                     </IconButton>
-                    <Typography variant="h6" color="text.secondary">{leftText}</Typography>
+                    <Typography variant="h6" color="text.secondary" style={{ fontSize: "15px", fontWeight: "500", color: "#2E3A5C" }}>{leftText}</Typography>
                     <Typography variant="p" color="text.secondary">/</Typography>
+                    <Typography variant="h6" color="text.secondary" style={{ fontSize: "15px", fontWeight: "500", color: "#2E3A5C" }}>{rightText}</Typography>
                 </Stack>
 
                 {/* Right side */}
