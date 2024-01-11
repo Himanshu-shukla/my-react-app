@@ -1,6 +1,6 @@
 import NavigationBar from '../components/NavigationBar';
 import React, { useState } from 'react'
-import { Table, TableBody, TableCell, Button, TableContainer, TableHead, TableRow, Paper, Chip, Avatar, Stack, Pagination, CardMedia, TextField, InputAdornment, CardContent, Card, Tabs, Tab, Typography, Box } from '@mui/material';
+import { Table, TableBody, Grid, TableCell, Button, TableContainer, TableHead, TableRow, Paper, Chip, Avatar, Stack, Pagination, CardMedia, TextField, InputAdornment, CardContent, Card, Tabs, Tab, Typography, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
@@ -52,79 +52,78 @@ const listData = [
 
 const CardContainer = () => {
   return (
-    <Stack direction='row'>
-      {gridData.map((card, index) => (
-        <Paper elevation={3} style={{ width: '320px', height: '535px', margin: '10px' }} key={index}>
-          <div> {/* Wrap the Card in a container */}
-            <Card>
-              <CardMedia component="img" style={{ height: "200px" }} image={card.imageUrl} alt="Card Image" />
-              <CardContent>
-                <Typography variant="h6" component="div">
-                  {card.heading}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {card.helperText}
-                </Typography>
-                <Typography variant="body1" style={{ height: "100px", overflow: "hidden" }} color="text.secondary" paragraph>
-                  {card.paragraph}
-                </Typography>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <div style={{ marginTop: 10 }}>
+      <Grid container spacing={2} justifyContent="center">
+        {gridData.map((card, index) => (
+          <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
+            <Paper elevation={3} style={{ width: '100%', height: '100%', margin: '10px' }}>
+              <Card>
+                <CardMedia component="img" style={{ height: "200px", width:"500px" }} image={card.imageUrl} alt="Card Image" />
+                <CardContent>
+                  <Typography variant="h6" component="div">
+                    {card.heading}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {card.helperText}
+                  </Typography>
+                  <Typography variant="body1" style={{ height: "100px", overflow: "hidden" }} color="text.secondary" paragraph>
+                    {card.paragraph}
+                  </Typography>
 
-                    <Typography variant="body1" color="text.secondary" >
-                      Token Name
-                    </Typography>
-                    <Typography variant="body1"  >
-                      PROPC
-                    </Typography>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10 }}>
+                    <div>
+                      <Typography variant="body1" color="text.secondary">
+                        Token Name
+                      </Typography>
+                      <Typography variant="body1">
+                        {card.tokenName}
+                      </Typography>
+                    </div>
+
+                    <div>
+                      <Typography variant="body1" color="text.secondary">
+                        Token Price
+                      </Typography>
+                      <Typography variant="body1">
+                        {card.tokenPrice}
+                      </Typography>
+                    </div>
                   </div>
 
-                  <div style={{ marginTop: 10 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10 }}>
+                    <div>
+                      <Typography variant="body1" color="text.secondary">
+                        Market Cap
+                      </Typography>
+                      <Typography variant="body1">
+                        {card.marketCap}
+                      </Typography>
+                    </div>
 
-                    <Typography variant="body1" color="text.secondary" >
-                      Token Price
-                    </Typography>
-                    <Typography variant="body1"  >
-                      $ 2.03
-                    </Typography>
+                    <div>
+                      <Typography variant="body1" color="text.secondary">
+                        Projected APR
+                      </Typography>
+                      <Typography variant="body1">
+                        {card.projectedAPR}
+                      </Typography>
+                    </div>
                   </div>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <div style={{ marginTop: 10 }}>
 
-                    <Typography variant="body1" color="text.secondary" >
-                      Market Cap
-                    </Typography>
-                    <Typography variant="body1"  >
-                      $1.34M
-                    </Typography>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10 }}>
+                    <Button variant="contained" style={{ background: "#2E3A5C" }}>
+                      {card.button1Label}
+                    </Button>
+                    <Button variant="outlined" style={{ color: "#2E3A5C", border: "1px solid #2E3A5C" }}>
+                      {card.button2Label}
+                    </Button>
                   </div>
-
-                  <div style={{ marginTop: 10 }}>
-
-                    <Typography variant="body1" color="text.secondary" >
-                      Projected APR
-                    </Typography>
-                    <Typography variant="body1"  >
-                      4.5%
-                    </Typography>
-                  </div>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10 }}>
-                  <Button variant="contained" style={{ background: "#2E3A5C" }}>
-                    {card.button1Label}
-                  </Button>
-                  <Button variant="outlined" style={{ color: "#2E3A5C", border: "1px solid #2E3A5C" }}>
-                    {card.button2Label}
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </Paper>
-      ))}
-    </Stack>
+                </CardContent>
+              </Card>
+            </Paper>
+          </Grid>
+        ))}
+      </Grid>
   );
 };
 
@@ -301,7 +300,7 @@ function Market() {
             <Button variant="outlined"
               className={!isListView ? "activebtn" : ""}
               onClick={() => handleSwitchView(false)}
-              style={{ marginRight: '10px', backgroundColor: "#fff", border: "1px solid #2E3A5C",}}
+              style={{ marginRight: '10px', backgroundColor: "#fff", border: "1px solid #2E3A5C", }}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" >
                 <path fillRule="evenodd" stroke={!isListView ? "white" : "#2E3A5C"} clipRule="evenodd" d="M4 11.5C2.61929 11.5 1.5 10.3807 1.5 9V4C1.5 2.61929 2.61929 1.5 4 1.5H9C10.3807 1.5 11.5 2.61929 11.5 4V9C11.5 10.3807 10.3807 11.5 9 11.5H4ZM3.5 9C3.5 9.27614 3.72386 9.5 4 9.5L9 9.5C9.27614 9.5 9.5 9.27614 9.5 9V4C9.5 3.72386 9.27614 3.5 9 3.5L4 3.5C3.72386 3.5 3.5 3.72386 3.5 4L3.5 9Z" fill="white" />

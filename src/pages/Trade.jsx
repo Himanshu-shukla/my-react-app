@@ -3,11 +3,11 @@ import React, { useState } from 'react'
 import Modal from 'react-modal';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import { Container, Grid, Paper, Stack, Box, Tabs, Tab, TextField, Button, InputAdornment, Input , ButtonGroup } from '@mui/material';
+import { Container, Grid, Paper, Stack, Box, Tabs, Tab, TextField, useTheme, Button, InputAdornment, Input , ButtonGroup } from '@mui/material';
 import { Avatar, Chip, Typography } from '@mui/material';
 import { ArrowDropDown } from '@mui/icons-material';
 import SearchIcon from '@mui/icons-material/Search';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, useMediaQuery, TableHead, TableRow } from '@mui/material';
 import { CandlestickChart, TrendingUp, Camera, Settings } from '@mui/icons-material';
 import { styled } from "@mui/system";
 import ControlSvg from '../assets/Control.svg'
@@ -295,37 +295,46 @@ const OrderTable = () => {
 
 const SellComponent = () => {
   const [tabValue, setTabValue] = React.useState(1); // 0 for Buy, 1 for Sell
+  const theme = useTheme();
+
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleChange = (event, newValue) => {
     setTabValue(newValue);
   };
 
   return (
-    <Paper style={{ padding: 20, marginTop: 20 }}>
+    <Paper style={{ padding: 20, marginTop: 20 }} >
       <Tabs
         value={tabValue}
         onChange={handleChange}
         indicatorColor="primary"
         textColor="primary"
       >
-        <Tab label="Buy" style={{
-          borderRadius: '8px 0px 0px 8px',
-          color: "#2E3A5C",
-          width: "140px"
-        }} />
-        <Tab label="Sell" style={{
-          borderRadius: '0px 8px 8px 0px',
-          background: '#EF5350',
-          color: "#fff",
-          width: "140px"
-        }} />
+        <Tab
+          label="Buy"
+          style={{
+            borderRadius: '8px 0px 0px 8px',
+            color: "#2E3A5C",
+            width: isSmallScreen ? '50%' : "140px"
+          }}
+        />
+        <Tab
+          label="Sell"
+          style={{
+            borderRadius: '0px 8px 8px 0px',
+            background: '#EF5350',
+            color: "#fff",
+            width: isSmallScreen ? '50%' : "140px"
+          }}
+        />
       </Tabs>
       {tabValue === 1 && (
         <div>
           <Tabs
-            orientation="horizontal"
-            variant="scrollable"
-            value={0} // Default to the first tab in Sell section
+            orientation={isSmallScreen ? 'vertical' : 'horizontal'}
+            variant={isSmallScreen ? 'fullWidth' : 'scrollable'}
+            value={0}
             textColor="#2E3A5C"
           >
             <Tab label="Limit" />
@@ -782,26 +791,26 @@ function Trade() {
   return (
     <>
       <NavigationBar></NavigationBar>
-      <Stack direction="column" style={{ width: "80%" }}>
-        <Header leftText="Trade" rightText="PROPC-USDT"></Header>
-        <PageTabs />
-        <Container>
-          <Grid container spacing={3}>
-            <Grid item xs={6}>
-              <Paper style={{ height: 50 }}>
-                <LeftContainer openModal={openModal} />
-                <CustomModal isOpen={isModalOpen} onRequestClose={closeModal} />
-              </Paper>
-            </Grid>
-            <Grid item xs={6}>
-              <Paper style={{ height: 50 }}>
-                <RightContainer />
-              </Paper>
-            </Grid>
+      <Stack direction="column" style={{ width: "80%", margin: "0 auto" }}>
+      <Header leftText="Trade" rightText="PROPC-USDT" />
+      <PageTabs />
+      <Container>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={6}>
+            <Paper style={{ height: 50 }}>
+              <LeftContainer openModal={openModal} />
+              <CustomModal isOpen={isModalOpen} onRequestClose={closeModal} />
+            </Paper>
           </Grid>
-        </Container>
-        <TwoStackedContainers />
-      </Stack>
+          <Grid item xs={12} md={6}>
+            <Paper style={{ height: 50 }}>
+              <RightContainer />
+            </Paper>
+          </Grid>
+        </Grid>
+      </Container>
+      <TwoStackedContainers />
+    </Stack>
     </>
   );
 }

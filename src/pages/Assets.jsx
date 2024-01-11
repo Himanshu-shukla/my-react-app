@@ -96,22 +96,23 @@ function Assets() {
   return (
     <>
       <NavigationBar />
-      <Stack direction="column" style={{ width: "75%" }}>
-        <Header leftText="Assets"></Header>
-        <Stack direction="row" mt={4} spacing={85} justifyContent="space-between" alignItems="center" >
-          <Typography variant="h5" style={{ fontWeight: "700" }}> Wallet</Typography>
-          <Stack direction="row" spacing={1}>
-            <Link to="/deposit" style={{ textDecoration: 'none' }}>
-              <Button variant="contained" style={{ background: "#2E3A5C" }}>Deposit</Button>
-            </Link>
-            <Link to="/withdraw-tansfer" style={{ textDecoration: 'none' }}>
-              <Button variant="outlined" style={{ color: "#2E3A5C", border: "1px solid #2E3A5C" }}>Withdraw</Button>
-            </Link>
-          </Stack>
+      <Stack direction="column" style={{ width: "75%", margin: "0 auto" }}>
+      <Header leftText="Assets" />
+      <Stack direction="row" mt={4} spacing={1} justifyContent="space-between" alignItems="center">
+        <Typography variant="h5" style={{ fontWeight: "700" }}> Wallet</Typography>
+        <Stack direction="row" spacing={1}>
+          <Link to="/deposit" style={{ textDecoration: 'none' }}>
+            <Button variant="contained" style={{ background: "#2E3A5C" }}>Deposit</Button>
+          </Link>
+          <Link to="/withdraw-transfer" style={{ textDecoration: 'none' }}>
+            <Button variant="outlined" style={{ color: "#2E3A5C", border: "1px solid #2E3A5C" }}>Withdraw</Button>
+          </Link>
         </Stack>
-        <Stack direction="row" mt={2} style={{ padding: "15px" }}>
-          {/* 1st Card */}
-          <Card style={{ width: '50%', height: '155px', background: "#4ba673", color: "#fff", borderRadius: "7px" }}>
+      </Stack>
+      <Grid container spacing={2} mt={2}>
+        {/* 1st Card */}
+        <Grid item xs={12} md={6}>
+          <Card style={{ width: '100%', height: '155px', background: "#4ba673", color: "#fff", borderRadius: "7px" }}>
             <CardContent>
               <Stack direction="row" spacing={1} justifyContent="space-between">
                 <Typography variant="body2" >
@@ -129,47 +130,49 @@ function Assets() {
               />
             </CardContent>
           </Card>
+        </Grid>
 
-          {/* 2nd Card */}
-          <Card style={{ width: 'calc(50% - 5px)', height: '155px' }}>
+        {/* 2nd Card */}
+        <Grid item xs={12} md={6}>
+          <Card style={{ width: '100%', height: '155px' }}>
             <CardContent>
-              <Stack direction="row" spacing={1} alignItems="center" justifyContent="space-between">
+              <Stack direction="row" spacing={20} alignItems="center" >
                 <Typography variant="body2" color="text.secondary">
                   KYC Lv. 1
                 </Typography>
                 <Stack direction="row" spacing={1} alignItems="center">
                   <Chip
                     label="Upgrade to Increase Limit"
-                    style={{ fontSize: "10px", backgroundColor: '#E7F6EC', color: '#036B26', height: "25px", width: "205px" }}
+                    style={{ fontSize: "10px", backgroundColor: '#E7F6EC', color: '#036B26', height: "25px", width: "100%" }}
                   />
                 </Stack>
               </Stack>
 
-              <Grid container ml={2} justifyContent="space-between" alignItems="center" marginTop={7}>
-                <Grid item >
-                  <Stack >
+              <Grid container spacing={1} justifyContent="space-between" alignItems="center" mt={2}>
+                <Grid item xs={12} md={6}>
+                  <Stack>
                     <Typography variant="p" style={{ fontSize: "10px" }}>Trade Fee Rate</Typography>
                     <Typography fontWeight="700" variant="h5">0.2%</Typography>
                   </Stack>
                 </Grid>
-                <Grid item mr={5} style={{ textAlign: 'right' }}>
-                  <Stack >
+                <Grid item xs={12} md={6}>
+                  <Stack>
                     <Typography variant="p" style={{ fontSize: "10px" }}>Withdraw Limit Per Day</Typography>
                     <Typography fontWeight="700" variant="h5">100 K</Typography>
                   </Stack>
                 </Grid>
-
               </Grid>
             </CardContent>
           </Card>
-        </Stack>
-        <Stack direction="row" justifyContent={'space-between'}>
+        </Grid>
+      </Grid>
 
-          <Typography mt={3} style={{ fontWeight: "700" }} variant='h5'> Your Assets</Typography>
-
-        </Stack>
-        <AssetTableComponent />
+      <Stack direction="row" justifyContent="space-between" mt={3}>
+        <Typography style={{ fontWeight: "700" }} variant='h5'> Your Assets</Typography>
       </Stack>
+
+      <AssetTableComponent />
+    </Stack>
     </>
   );
 }
