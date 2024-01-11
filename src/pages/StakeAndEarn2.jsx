@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import NavigationBar from '../components/NavigationBar';
-import TextField from '@mui/material/TextField';
+import Header from '../components/Header';
+import {TextField, Stack} from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import './StakeAndEarn2.css';
 import imageUrl from '../assets/icon.png'
@@ -49,14 +50,17 @@ function StakeAndEarn2() {
     height: '35px', // Set the desired height
   };
 
-    return (
-        <>
-          <NavigationBar />
-          <div className="stake-earn2-frame"> 
-            <h5 className='heading-text'>
-              Stake and Earn
-            </h5>
-            <div className='container-block'>
+  return (
+    <>
+      <NavigationBar />
+      <Stack direction="column">
+
+        <Header leftText="Home"></Header>
+        <div className="stake-earn2-frame">
+          <h5 className='heading-text'>
+            Stake and Earn
+          </h5>
+          <div className='container-block'>
             <div className='juno-head'>
               <div style={icon}></div>
               <h4 className='juno-head-text'>JUNA</h4>
@@ -88,44 +92,45 @@ function StakeAndEarn2() {
                       Accrual Date
                     </h6>
                     <p className='row-head-detail'>
-                    2024-01-19 05:00
+                      2024-01-19 05:00
                     </p>
                   </div>
                   <div className='detail-row'>
                     <h6 className='row-head'>
-                    Profit Distribution Date
+                      Profit Distribution Date
                     </h6>
                     <p className='row-head-detail'>
-                    2024-01-19 17:00
+                      2024-01-19 17:00
                     </p>
                   </div>
                   <div className='detail-row'>
                     <h6 className='row-head'>
-                    Estimated Reward in JUNA
+                      Estimated Reward in JUNA
                     </h6>
                     <p className='row-head-detail'>
-                    876 JUNA
+                      876 JUNA
                     </p>
                   </div>
                 </div>
                 <div className='detail-right'>
                   <div className='amount-form'>
                     <div className='entry-form'>
-                       <h6 className="amt-text">Enter amount</h6>
+                      <h6 className="amt-text">Enter amount</h6>
                       <NumberInputField />
                     </div>
                     <div className='btn-next'>
-                     <button className='next'>Next</button>
+                      <button className='next'>Next</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            </div>
-            
           </div>
-        </>
-      );
+
+        </div>
+      </Stack>
+    </>
+  );
 }
 
 export default StakeAndEarn2
