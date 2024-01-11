@@ -11,6 +11,7 @@ import {
   Grid,
   Box,
   Stack,
+  useMediaQuery,
   Checkbox,
   FormControlLabel,
 } from '@mui/material';
@@ -19,6 +20,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 function AssetDetailForm({ initialStep = 0 }) {
+  const isLargeScreen = useMediaQuery('(min-width: 768px)');
+
   const steps = ['Asset Details', 'Technology & Infrastructure', 'Crop & LiveStock', 'Blockchain Details', 'KYC Verification'];
   const [activeStep, setActiveStep] = React.useState(initialStep);
 
@@ -58,7 +61,15 @@ function AssetDetailForm({ initialStep = 0 }) {
           <div>
             {/* Step Content 1 */}
             {activeStep === 0 && (
-              <Stack container spacing={2} justifyContent="center" ml={45} mt={5} width={"35%"}>
+              <Stack
+                container spacing={2}
+                sx={{
+                  justifyContent: 'center',
+                  ml: isLargeScreen ? 45 : 0,
+                  mt: 5,
+                  width: isLargeScreen ? '35%' : '100%',
+                  mx: 'auto',
+                }}>
                 <Grid item xs={12}>
                   <Typography variant="p">Asset Name (Nickname)</Typography>
                 </Grid>
@@ -199,7 +210,16 @@ function AssetDetailForm({ initialStep = 0 }) {
 
             {/* Step Content 2 */}
             {activeStep === 1 && (
-              <Grid container spacing={2} justifyContent="center" ml={45} mt={5} width={"35%"}>
+              <Grid
+                container
+                spacing={2}
+                sx={{
+                  justifyContent: 'center',
+                  ml: isLargeScreen ? 45 : 0,
+                  mt: 5,
+                  width: isLargeScreen ? '35%' : '100%',
+                  mx: 'auto',
+                }}>
                 <Grid item xs={12}>
                   <Typography variant="p">Select all applicable technologies implemented on your farm</Typography>
                 </Grid>
@@ -252,7 +272,16 @@ function AssetDetailForm({ initialStep = 0 }) {
             )}
 
             {activeStep === 2 && (
-              <Grid container spacing={2} justifyContent="center" ml={45} mt={5} width={"35%"}>
+              <Grid
+                container
+                spacing={2}
+                sx={{
+                  justifyContent: 'center',
+                  ml: isLargeScreen ? 45 : 0,
+                  mt: 5,
+                  width: isLargeScreen ? '35%' : '100%',
+                  mx: 'auto',
+                }}>
                 <Grid item xs={12}>
                   <Typography variant="p">Choose the main crop(s) grown on your farm</Typography>
                 </Grid>
@@ -285,7 +314,16 @@ function AssetDetailForm({ initialStep = 0 }) {
             )}
 
             {activeStep === 3 && (
-              <Grid container spacing={2} justifyContent="center" ml={45} mt={5} width={"35%"}>
+              <Grid
+                container
+                spacing={2}
+                sx={{
+                  justifyContent: 'center',
+                  ml: isLargeScreen ? 45 : 0,
+                  mt: 5,
+                  width: isLargeScreen ? '35%' : '100%',
+                  mx: 'auto',
+                }}>
 
                 <Grid item xs={12}>
                   <Typography variant="p">Smart Contract Address</Typography>
@@ -325,7 +363,16 @@ function AssetDetailForm({ initialStep = 0 }) {
             )}
 
             {activeStep === 4 && (
-              <Grid container spacing={2} justifyContent="center" ml={45} mt={5} width={"35%"}>
+              <Grid
+                container
+                spacing={2}
+                sx={{
+                  justifyContent: 'center',
+                  ml: isLargeScreen ? 45 : 0,
+                  mt: 5,
+                  width: isLargeScreen ? '35%' : '100%',
+                  mx: 'auto',
+                }}>
 
                 <Grid item xs={12}>
                   <Typography variant="p">Full Name</Typography>
@@ -445,7 +492,7 @@ function AssetDetailForm({ initialStep = 0 }) {
 
 
             {/* Navigation Buttons */}
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'start', marginTop: "35px", height: '100vh' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'start', marginTop: "35px", marginLeft: "10px", height: '10vh' }}>
               <Button style={nextbtn} onClick={handleNext} disabled={activeStep === steps.length - 1}>
                 Next
               </Button>

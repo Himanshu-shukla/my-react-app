@@ -9,6 +9,7 @@ import {
   TextField,
   Button,
   Grid,
+  useMediaQuery,
   Box,
   Radio,
   Stack,
@@ -21,6 +22,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 function DelistAssetTokenForm({ initialStep = 0 }) {
+  const isLargeScreen = useMediaQuery('(min-width: 768px)');
+
   const steps = ['Asset Selection', 'Delisting Reasons', 'Delisting Details', 'Confirmation and Finalisation'];
   const [activeStep, setActiveStep] = React.useState(initialStep);
 
@@ -61,7 +64,17 @@ function DelistAssetTokenForm({ initialStep = 0 }) {
           <div>
             {/* Step Content 1 */}
             {activeStep === 0 && (
-              <Stack container spacing={2} justifyContent="center" ml={45} mt={5} width={"35%"}>
+              <Stack
+                container
+                spacing={2}
+                sx={{
+                  justifyContent: 'center',
+                  ml: isLargeScreen ? 45 : 0,
+                  mt: 5,
+                  width: isLargeScreen ? '35%' : '100%',
+                  mx: 'auto',
+                }}
+              >
                 <Grid item xs={12}>
                   <Typography variant="p">Select Tokenized Asset to Delist</Typography>
                 </Grid>
@@ -80,7 +93,16 @@ function DelistAssetTokenForm({ initialStep = 0 }) {
 
             {/* Step Content 2 */}
             {activeStep === 1 && (
-              <Grid container spacing={2} justifyContent="center" ml={45} mt={5} width={"35%"}>
+              <Grid
+                container
+                spacing={2}
+                sx={{
+                  justifyContent: 'center',
+                  ml: isLargeScreen ? 45 : 0,
+                  mt: 5,
+                  width: isLargeScreen ? '35%' : '100%',
+                  mx: 'auto',
+                }} >
                 <Grid item xs={12}>
                   <Typography variant="P">Delisting Reason</Typography>
                 </Grid>
@@ -107,7 +129,16 @@ function DelistAssetTokenForm({ initialStep = 0 }) {
             )}
 
             {activeStep === 2 && (
-              <Grid container spacing={2} justifyContent="center" ml={45} mt={5} width={"35%"}>
+              <Grid
+                container
+                spacing={2}
+                sx={{
+                  justifyContent: 'center',
+                  ml: isLargeScreen ? 45 : 0,
+                  mt: 5,
+                  width: isLargeScreen ? '35%' : '100%',
+                  mx: 'auto',
+                }}>
                 <Grid item xs={12}>
                   <Typography variant="p">Market Conditions (Optional)</Typography>
                 </Grid>
@@ -139,7 +170,16 @@ function DelistAssetTokenForm({ initialStep = 0 }) {
             )}
 
             {activeStep === 3 && (
-              <Grid container spacing={2} justifyContent="center" ml={45} mt={5} width={"35%"}>
+              <Grid
+                container
+                spacing={2}
+                sx={{
+                  justifyContent: 'center',
+                  ml: isLargeScreen ? 45 : 0,
+                  mt: 5,
+                  width: isLargeScreen ? '35%' : '100%',
+                  mx: 'auto',
+                }}>
 
                 <Grid item xs={12}>
                   <Typography variant="p">Confirmation</Typography>
@@ -154,7 +194,7 @@ procedure and fees (if applicable)" />
             )}
 
             {/* Navigation Buttons */}
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'start', marginTop: "35px", height: '100vh' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'start', marginTop: "35px", marginLeft: "10px", height: '10vh' }}>
               <Button style={nextbtn} onClick={handleNext} disabled={activeStep === steps.length - 1}>
                 Submit Delisting Request
               </Button>
