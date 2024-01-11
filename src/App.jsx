@@ -94,7 +94,7 @@ const AppContent = () => {
           <Route path="/p2p-trading-proc" element={<P2PTradingProc />} />
           <Route path="/assets" element={<Assets />} />
           <Route path="/deposit" element={<Deposit />} />
-          <Route path="/withdraw-tansfer" element={<WithdrawTransfer />} />
+          <Route path="/withdraw-transfer" element={<WithdrawTransfer />} />
           <Route path="/wt-confirmation" element={<WithdrawTransferConfirmation />} />
           <Route path="/buy-crypto" element={<BuyCryptocurrency />} />
           <Route path="/asset-detail" element={<AssetDetailForm />} />
