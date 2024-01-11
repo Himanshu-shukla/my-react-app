@@ -57,95 +57,99 @@ const cardData2 = [
 
 const TopCards = () => {
   return (
-    <Stack direction="row" mt={2} style={{ padding: "15px" }}>
+    <Grid container spacing={2} mt={2} style={{ padding: "15px" }}>
       {/* 1st Card */}
-      <Card style={{ width: 'calc(50% * 2 + 5px)', height: '155px', background: "#4ba673", color: "#fff", borderRadius: "7px" }}>
-        <CardContent>
-          <Stack direction="row" spacing={1} justifyContent="space-between">
-            <Typography variant="body2" >
-              Available Balance
-            </Typography>
-            <IconButton style={{ color: "#fff", position: "relative", top: "35px", right: "20px" }}>
-              <VisibilityIcon style={{ fontSize: "35px" }} />
-            </IconButton>
-          </Stack>
-          <Typography variant="h5">$ 140,000.00</Typography>
-          <Chip
-            icon={<ArrowUpwardIcon style={{ width: "15px", height: "18px", backgroundColor: '#E7F6EC', color: '#036B26' }} />}
-            label="5.26%"
-            style={{ backgroundColor: '#E7F6EC', color: '#036B26', marginTop: '8px', height: "22px" }}
-          />
-        </CardContent>
-      </Card>
+      <Grid item xs={12} md={6}>
+        <Card style={{ width: '100%', height: '155px', background: "#4ba673", color: "#fff", borderRadius: "7px" }}>
+          <CardContent>
+            <Stack direction="row" spacing={1} justifyContent="space-between">
+              <Typography variant="body2">
+                Available Balance
+              </Typography>
+              <IconButton style={{ color: "#fff", position: "relative", top: "35px", right: "20px" }}>
+                <VisibilityIcon style={{ fontSize: "35px" }} />
+              </IconButton>
+            </Stack>
+            <Typography variant="h5">$ 140,000.00</Typography>
+            <Chip
+              icon={<ArrowUpwardIcon style={{ width: "15px", height: "18px", backgroundColor: '#E7F6EC', color: '#036B26' }} />}
+              label="5.26%"
+              style={{ backgroundColor: '#E7F6EC', color: '#036B26', marginTop: '8px', height: "22px" }}
+            />
+          </CardContent>
+        </Card>
+      </Grid>
 
       {/* 2nd Card */}
-      <Card style={{ width: 'calc(50% - 5px)', height: '155px' }}>
-        <CardContent>
-          <Stack direction="row" spacing={1} alignItems="center" justifyContent="space-between">
-            <Typography variant="body2" color="text.secondary">
-              PROPC
-            </Typography>
-            <Stack direction="row" spacing={1} alignItems="center">
+      <Grid item xs={6} md={3}>
+        <Card style={{ width: '100%', height: '155px' }}>
+          <CardContent>
+            <Stack direction="row" spacing={1} alignItems="center" justifyContent="space-between">
               <Typography variant="body2" color="text.secondary">
-                24 H
+                PROPC
               </Typography>
-              <KeyboardArrowDownIcon color="primary" />
+              <Stack direction="row" spacing={1} alignItems="center">
+                <Typography variant="body2" color="text.secondary">
+                  24 H
+                </Typography>
+                <KeyboardArrowDownIcon color="primary" />
+              </Stack>
             </Stack>
-          </Stack>
 
-          <Grid container spacing={1} justifyContent="space-between" alignItems="center" marginTop={7}>
-            <Grid item xs={3}>
-              <Typography fontWeight="700" variant="h4">$2.38</Typography>
-
+            <Grid container spacing={1} justifyContent="space-between" alignItems="center" marginTop={7}>
+              <Grid item xs={3}>
+                <Typography fontWeight="700" variant="h4">$2.38</Typography>
+              </Grid>
+              <Grid item xs={5} style={{ textAlign: 'right' }}>
+                <Chip
+                  icon={<ArrowUpwardIcon fontSize='10px' />}
+                  label="5.26%"
+                  style={{ fontSize: "10px", backgroundColor: '#E7F6EC', color: '#036B26', marginLeft: "35px", height: "22px", width: "65px" }}
+                />
+              </Grid>
+              <Grid item xs={4} style={{ textAlign: 'right' }}>
+                <StarIcon />
+              </Grid>
             </Grid>
-            <Grid item xs={5} style={{ textAlign: 'right' }}>
-              <Chip
-                icon={<ArrowUpwardIcon fontSize='10px' />}
-                label="5.26%"
-                style={{ fontSize: "10px", backgroundColor: '#E7F6EC', color: '#036B26', marginLeft: "35px", height: "22px", width: "65px" }}
-              />
-            </Grid>
-            <Grid item xs={4} style={{ textAlign: 'right' }}>
-              <StarIcon />
-            </Grid>
-          </Grid>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </Grid>
 
       {/* 3rd Card */}
-      <Card style={{ width: 'calc(50% - 5px)', height: '155px' }}>
-        <CardContent>
-          <Stack direction="row" spacing={1} alignItems="center" justifyContent="space-between">
-            <Typography variant="body2" color="text.secondary">
-              PROPC
-            </Typography>
-            <Stack direction="row" spacing={1} alignItems="center">
+      <Grid item xs={6} md={3}>
+        <Card style={{ width: '100%', height: '155px' }}>
+          <CardContent>
+            <Stack direction="row" spacing={1} alignItems="center" justifyContent="space-between">
               <Typography variant="body2" color="text.secondary">
-                24 H
+                PROPC
               </Typography>
-              <KeyboardArrowDownIcon color="primary" />
+              <Stack direction="row" spacing={1} alignItems="center">
+                <Typography variant="body2" color="text.secondary">
+                  24 H
+                </Typography>
+                <KeyboardArrowDownIcon color="primary" />
+              </Stack>
             </Stack>
-          </Stack>
 
-          <Grid container spacing={1} justifyContent="space-between" alignItems="center" marginTop={7}>
-            <Grid item xs={3}>
-              <Typography fontWeight="700" variant="h4">$2.38</Typography>
-
+            <Grid container spacing={1} justifyContent="space-between" alignItems="center" marginTop={7}>
+              <Grid item xs={3}>
+                <Typography fontWeight="700" variant="h4">$2.38</Typography>
+              </Grid>
+              <Grid item xs={5} style={{ textAlign: 'right' }}>
+                <Chip
+                  icon={<ArrowUpwardIcon fontSize='10px' />}
+                  label="5.26%"
+                  style={{ fontSize: "10px", backgroundColor: '#E7F6EC', color: '#036B26', marginLeft: "35px", height: "22px", width: "65px" }}
+                />
+              </Grid>
+              <Grid item xs={4} style={{ textAlign: 'right' }}>
+                <StarIcon />
+              </Grid>
             </Grid>
-            <Grid item xs={5} style={{ textAlign: 'right' }}>
-              <Chip
-                icon={<ArrowUpwardIcon fontSize='10px' />}
-                label="5.26%"
-                style={{ fontSize: "10px", backgroundColor: '#E7F6EC', color: '#036B26', marginLeft: "35px", height: "22px", width: "65px" }}
-              />
-            </Grid>
-            <Grid item xs={4} style={{ textAlign: 'right' }}>
-              <StarIcon />
-            </Grid>
-          </Grid>
-        </CardContent>
-      </Card>
-    </Stack>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   );
 };
 
@@ -294,10 +298,10 @@ const CardContainer2 = () => {
 
 const CardContainer = () => {
   return (
-    <Stack direction='row'>
+    <Grid container spacing={2}>
       {cardData.map((card, index) => (
-        <Paper elevation={3} style={{ width: '320px', height: '535px', margin: '10px' }} key={index}>
-          <div> {/* Wrap the Card in a container */}
+        <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
+          <Paper elevation={3} style={{ width: '100%', height: '100%', padding: '10px' }}>
             <Card>
               <CardMedia component="img" style={{ height: "200px" }} image={card.imageUrl} alt="Card Image" />
               <CardContent>
@@ -311,48 +315,46 @@ const CardContainer = () => {
                   {card.paragraph}
                 </Typography>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <div style={{ marginTop: 10 }}>
-
-                    <Typography variant="body1" color="text.secondary" >
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10 }}>
+                  <div>
+                    <Typography variant="body1" color="text.secondary">
                       Token Name
                     </Typography>
-                    <Typography variant="body1"  >
+                    <Typography variant="body1">
                       PROPC
                     </Typography>
                   </div>
 
-                  <div style={{ marginTop: 10 }}>
-
-                    <Typography variant="body1" color="text.secondary" >
+                  <div>
+                    <Typography variant="body1" color="text.secondary">
                       Token Price
                     </Typography>
-                    <Typography variant="body1"  >
+                    <Typography variant="body1">
                       $ 2.03
                     </Typography>
                   </div>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <div style={{ marginTop: 10 }}>
 
-                    <Typography variant="body1" color="text.secondary" >
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10 }}>
+                  <div>
+                    <Typography variant="body1" color="text.secondary">
                       Market Cap
                     </Typography>
-                    <Typography variant="body1"  >
+                    <Typography variant="body1">
                       $1.34M
                     </Typography>
                   </div>
 
-                  <div style={{ marginTop: 10 }}>
-
-                    <Typography variant="body1" color="text.secondary" >
+                  <div>
+                    <Typography variant="body1" color="text.secondary">
                       Projected APR
                     </Typography>
-                    <Typography variant="body1"  >
+                    <Typography variant="body1">
                       4.5%
                     </Typography>
                   </div>
                 </div>
+
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10 }}>
                   <Button variant="contained" style={{ background: "#2E3A5C" }}>
                     {card.button1Label}
@@ -363,17 +365,17 @@ const CardContainer = () => {
                 </div>
               </CardContent>
             </Card>
-          </div>
-        </Paper>
+          </Paper>
+        </Grid>
       ))}
-    </Stack>
+    </Grid>
   );
 };
 
 const ModifiedChip = ({ item }) => {
 
   if (!item || typeof item !== 'string') {
-    return null; 
+    return null;
   }
 
   const changeValue = item.replace(/[+-]/, '');
@@ -529,7 +531,7 @@ function Home({ intialTab = 0 }) {
             <HomeTable data={newListingData} isSinceListing={true}></HomeTable>
           </TabPanel>
         </div>
-        <Stack direction="row" mt={5} style={{ width: "96%" }} justifyContent="space-between">
+        <Stack direction="row" mt={5} style={{ width: "93%" }} justifyContent="space-between">
           <Typography>Featured Listing</Typography>
           <Button variant="text" style={{ color: "#000" }}>
             See All
