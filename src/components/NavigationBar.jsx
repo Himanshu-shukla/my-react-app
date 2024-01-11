@@ -121,6 +121,13 @@ const NavigationBar = () => {
 
                 <ListItemText primary="Delist Asset Tokenisation" style={{ color: "#2E3A5C", marginLeft: "12px" }} />
               </ListItem>
+              <ListItem component={Link} to="/ico-page-ongoing">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M5.0003 17.5001L7.5003 2.50008M12.5003 17.5001L15.0003 2.50007M3.33363 6.66674L17.5003 6.66674M2.50027 13.3334L16.6669 13.3334" stroke="#101928" stroke-width="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+
+                <ListItemText primary="ICO Launchpad" style={{ color: "#2E3A5C", marginLeft: "12px" }} />
+              </ListItem>
               <ListItem component={Link} to="/signup">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path d="M5.0003 17.5001L7.5003 2.50008M12.5003 17.5001L15.0003 2.50007M3.33363 6.66674L17.5003 6.66674M2.50027 13.3334L16.6669 13.3334" stroke="#101928" stroke-width="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -299,6 +306,22 @@ const NavigationBar = () => {
                   marginLeft: '5px',
                   flex: '1 0 0',
                 }}>Delist Asset Tokenisation </Link>
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M5.0003 17.5001L7.5003 2.50008M12.5003 17.5001L15.0003 2.50007M3.33363 6.66674L17.5003 6.66674M2.50027 13.3334L16.6669 13.3334" stroke="#101928" stroke-width="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <Link to="/ico-page-ongoing" style={{
+                  textDecoration: 'none',
+                  color: 'var(--Primary, #2E3A5C)',
+                  fontFamily: 'Inter',
+                  fontSize: '14px',
+                  fontStyle: 'normal',
+                  fontWeight: 500,
+                  lineHeight: '20px',
+                  marginLeft: '5px',
+                  flex: '1 0 0',
+                }}>ICO LaunchPad </Link>
               </li>
             </ul>
           </div>

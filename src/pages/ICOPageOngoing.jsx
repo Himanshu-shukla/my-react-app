@@ -6,6 +6,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Paper from '@mui/material/Paper';
 import Chip from '@mui/material/Chip';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
@@ -144,6 +145,8 @@ const styles = (theme) => ({
 });
 
 const ICOPageOngoing = ({ initialStep = 0 }) => {
+  const isSmallScreen = useMediaQuery('(max-width: 768px)');
+
   const theme = useTheme();
   const classes = useCustomStyles(styles, theme);
 
@@ -211,17 +214,19 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
         {value === 0 && (
           <Paper style={{
             margin: 2,
-            padding: 3,
+            padding: isSmallScreen ? '10px' : '3px', // Adjust padding based on screen size
             display: 'flex',
             justifyContent: 'space-between',
-            height: "fit-content"
+            height: 'fit-content',
+            flexDirection: isSmallScreen ? 'column' : 'row', // Change flexDirection for small screens
           }}>
             {/* Left Container */}
             <div style={{
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'flex-start',
-              width: "50%"
+              width: isSmallScreen ? '100%' : '50%',
+              marginBottom: isSmallScreen ? '20px' : '0', // Adjust margin for small screens
             }}>
               <div style={{
                 display: 'flex',
@@ -312,8 +317,8 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
             <div style={{
               border: '1px solid #2E3A5C', // Border color
               paddingLeft: theme.spacing(3),
-              borderRadius: "10px",
-              width: "50%"
+              borderRadius: '10px',
+              width: isSmallScreen ? '100%' : '50%',
             }}>
               <Typography variant="body1" style={{ marginTop: 20 }}>Token Sale ENDS in</Typography>
               <Typography style={{
@@ -359,17 +364,19 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
 
             <Paper style={{
               margin: 2,
-              padding: 3,
+              padding: isSmallScreen ? '10px' : '3px', // Adjust padding based on screen size
               display: 'flex',
               justifyContent: 'space-between',
-              height: "fit-content"
+              height: 'fit-content',
+              flexDirection: isSmallScreen ? 'column' : 'row', // Change flexDirection for small screens
             }}>
               {/* Left Container */}
               <div style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-start',
-                width: "50%"
+                width: isSmallScreen ? '100%' : '50%',
+                marginBottom: isSmallScreen ? '20px' : '0', // Adjust margin for small screens
               }}>
                 <div style={{
                   display: 'flex',
@@ -460,8 +467,8 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
               <div style={{
                 border: '1px solid #2E3A5C', // Border color
                 paddingLeft: theme.spacing(3),
-                borderRadius: "10px",
-                width: "50%"
+                borderRadius: '10px',
+                width: isSmallScreen ? '100%' : '50%',
               }}>
                 <Typography variant="body1" style={{ marginTop: 20 }}>Token Sale ENDS in</Typography>
                 <Typography style={{
@@ -503,17 +510,19 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
             </Paper>
             <Paper style={{
               margin: 2,
-              padding: 3,
+              padding: isSmallScreen ? '10px' : '3px', // Adjust padding based on screen size
               display: 'flex',
               justifyContent: 'space-between',
-              height: "fit-content"
+              height: 'fit-content',
+              flexDirection: isSmallScreen ? 'column' : 'row', // Change flexDirection for small screens
             }}>
               {/* Left Container */}
               <div style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-start',
-                width: "50%"
+                width: isSmallScreen ? '100%' : '50%',
+                marginBottom: isSmallScreen ? '20px' : '0', // Adjust margin for small screens
               }}>
                 <div style={{
                   display: 'flex',
@@ -604,8 +613,8 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
               <div style={{
                 border: '1px solid #2E3A5C', // Border color
                 paddingLeft: theme.spacing(3),
-                borderRadius: "10px",
-                width: "50%"
+                borderRadius: '10px',
+                width: isSmallScreen ? '100%' : '50%',
               }}>
                 <Typography variant="body1" style={{ marginTop: 20 }}>Token Sale ENDS in</Typography>
                 <Typography style={{
@@ -651,17 +660,19 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
         {value === 2 && (
           <Paper style={{
             margin: 2,
-            padding: 3,
+            padding: isSmallScreen ? '10px' : '3px', // Adjust padding based on screen size
             display: 'flex',
             justifyContent: 'space-between',
-            height: "fit-content"
+            height: 'fit-content',
+            flexDirection: isSmallScreen ? 'column' : 'row', // Change flexDirection for small screens
           }}>
             {/* Left Container */}
             <div style={{
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'flex-start',
-              width: "50%"
+              width: isSmallScreen ? '100%' : '50%',
+              marginBottom: isSmallScreen ? '20px' : '0', // Adjust margin for small screens
             }}>
               <div style={{
                 display: 'flex',
@@ -752,8 +763,8 @@ const ICOPageOngoing = ({ initialStep = 0 }) => {
             <div style={{
               border: '1px solid #2E3A5C', // Border color
               paddingLeft: theme.spacing(3),
-              borderRadius: "10px",
-              width: "50%"
+              borderRadius: '10px',
+              width: isSmallScreen ? '100%' : '50%',
             }}>
               <Typography variant="body1" style={{ marginTop: 20 }}>Token Sale ENDS in</Typography>
               <Typography style={{
