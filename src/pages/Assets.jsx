@@ -124,7 +124,7 @@ function Assets() {
               </Stack>
               <Typography variant="h5">$ 140,000.00</Typography>
               <Chip
-                icon={<ArrowUpwardIcon />}
+                icon={<ArrowUpwardIcon style={{ width: "15px", height: "18px", backgroundColor: '#E7F6EC', color: '#036B26' }} />}
                 label="5.26%"
                 style={{ backgroundColor: '#E7F6EC', color: '#036B26', marginTop: '8px', height: "22px" }}
               />
