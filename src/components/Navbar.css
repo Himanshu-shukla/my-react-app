@@ -168,6 +168,10 @@ color: white;
       padding-top: 10px; /* Add spacing at the top */
     }
   
+    .desktop-view {
+      display: none;
+    }
+
     ul {
       padding: 0;
     }
@@ -177,4 +181,19 @@ color: white;
     }
   }
 
-  
+  .search-mobile {
+    outline: none;
+    display: flex;
+    height: 33px;
+    padding: 8px 12px;
+    align-items: center;
+    gap: 12px;
+    align-self: stretch;
+    border-radius: 6px;
+    border: 1px solid #D0D5DD;
+    background: #FFF;
+  }
+
+  .mobile-searchBar {
+    outline: none;
+  }
