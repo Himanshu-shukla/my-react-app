@@ -95,8 +95,8 @@ const AppContent = () => {
           <Route path="/assets" element={<Assets />} />
           <Route path="/deposit" element={<Deposit />} />
           <Route path="/withdraw-transfer" element={<WithdrawTransfer />} />
-          <Route path="/wt-confirmation" element={<WithdrawTransferConfirmation />} />
-          <Route path="/buy-crypto" element={<BuyCryptocurrency />} />
+          <Route path="/transfer-confirmation" element={<WithdrawTransferConfirmation />} />
+          <Route path="/buy-cryptocurrency" element={<BuyCryptocurrency />} />
           <Route path="/asset-detail" element={<AssetDetailForm />} />
           <Route path="/asset-token-2" element={<AssetTokenisationForm2 />} />
           <Route path="/asset-token-3" element={<AssetTokenisationForm3 />} />

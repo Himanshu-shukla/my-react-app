@@ -18,6 +18,8 @@ import {
 import { Link } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { KeyboardArrowDown } from '@mui/icons-material'; // Import the caret down icon
+import usFlag from '../assets/us-flag@2x.png'
 
 function AssetDetailForm({ initialStep = 0 }) {
   const isLargeScreen = useMediaQuery('(min-width: 768px)');
@@ -43,7 +45,12 @@ function AssetDetailForm({ initialStep = 0 }) {
             Return to Home
           </Button>
         </Link>
-        <Button >Eng</Button>
+        <Button color="inherit" >
+          <img src={usFlag} alt="US Flag" style={{ width: '20px', height: '20px', borderRadius: '50%' }} />
+          <Typography variant="p" ml={1} color="text.secondary">Eng
+            <KeyboardArrowDown />
+          </Typography>
+        </Button>
       </Stack>
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((label) => (

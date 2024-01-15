@@ -19,7 +19,10 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { KeyboardArrowDown } from '@mui/icons-material'; // Import the caret down icon
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import usFlag from '../assets/us-flag@2x.png'
+
 
 function DelistAssetTokenForm({ initialStep = 0 }) {
   const isLargeScreen = useMediaQuery('(min-width: 768px)');
@@ -46,7 +49,12 @@ function DelistAssetTokenForm({ initialStep = 0 }) {
             Return to Home
           </Button>
         </Link>
-        <Button >Eng</Button>
+        <Button color="inherit" >
+          <img src={usFlag} alt="US Flag" style={{ width: '20px', height: '20px', borderRadius: '50%' }} />
+          <Typography variant="p" ml={1} color="text.secondary">Eng
+            <KeyboardArrowDown />
+          </Typography>
+        </Button>
       </Stack>
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((label) => (

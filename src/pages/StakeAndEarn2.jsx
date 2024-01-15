@@ -55,7 +55,7 @@ function StakeAndEarn2() {
       <NavigationBar />
       <Stack direction="column">
 
-        <Header leftText="Home"></Header>
+        <Header leftText="Home" rightText="Staking"></Header>
         <div className="stake-earn2-frame">
         <h5 className='heading-text'>
           Stake and Earn
